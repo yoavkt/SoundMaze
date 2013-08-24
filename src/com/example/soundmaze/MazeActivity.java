@@ -1,13 +1,14 @@
 package com.example.soundmaze;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 
 public class MazeActivity extends Activity {
 
 	Maze stageMaze;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

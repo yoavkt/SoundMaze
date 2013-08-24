@@ -1,48 +1,43 @@
 package com.example.soundmaze;
 
+import org.json.JSONObject;
+
+import android.graphics.Point;
+
 public class Maze {
 
-	
-	int[][][] maze;
-	int size;
-	final int DIRECTON=3;
-	public Maze(int res, String index) {
-		if (res==0)
-			size=14;
-		else
-			size=19;
-		maze=new int[size][size][DIRECTON];
-		this.setMaze(index);
+	String _mazeName;
+	mazeCell[][] _mazeMap;
+	Point _pointStart;
+	Point _pointEnd;
+
+	public Maze(String mazeName, mazeCell[][] mazeMap, Point pointStart,
+			Point pointEnd) {
+		_mazeName = mazeName;
+		_mazeMap = mazeMap;
+		_pointStart = pointStart;
+		_pointEnd = pointEnd;
 	}
-	public void setMaze(String index){
-		for (int i = 0; i < maze.length; i++) {
-			for (int j = 0; j < maze[i].length; j++) {
-				for (int j2 = 0; j2 < maze[i][j].length; j2++) {
-					maze[i][j][j2]=0;
-				}
-			}
-		}
-		if (index.equals(R.string.maze_1_name)){
-		for (int i = 0; i < maze.length-1; i++) {
-			//column X rows X dirs
-			maze[i][1][2]=1;
-		}
-		for (int i = 0; i < maze.length-1; i++) {
-			maze[14][i][3]=1;
-		}
-		}
-		else{
-			for (int i = 0; i < maze.length-1; i++) {
-				//column X rows X dirs
-				maze[1][i][3]=1;
-			}
-			for (int i = 0; i < maze.length-1; i++) {
-				maze[i][14][2]=1;
-			}
-			}
-		}
-			
+
+	public Maze(JSONObject jsonObject) {
 		
 	}
 
+	public boolean legalMove(Point from, Point to) {
+		mazeCell m = _mazeMap[from.x][from.y];
+		if (from.x == to.x && from.y == to.y - 1)
+			return m.canMoveRight();
+		if (from.x == to.x && from.y - 1 == to.y)
+			return m.canMoveLeft();
+		if (from.x == to.x - 1 && from.y == to.y)
+			return m.canMoveDown();
+		if (from.x - 1 == to.x && from.y == to.y)
+			return m.canMoveUp();
+		return false;
+	}
 
+	public boolean winMaze(Point loc) {
+		return loc.equals(_pointEnd);
+	}
+
+}
