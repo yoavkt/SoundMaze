@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.ImageView;
 
 public class MazeActivity extends Activity {
 
@@ -14,7 +15,9 @@ public class MazeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_maze);
 		Intent intent = getIntent();
-		String value = intent.getStringExtra("maze");
+		Maze playMaze=MazeMaster.getMaze(intent.getStringExtra("maze"));
+		ImageView img =(ImageView) findViewById(R.id.imageView1);
+		img.setImageResource(R.drawable.mz2);
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 package com.example.soundmaze;
 
-import il.ac.huji.todolist.FlickrImage;
+
 
 import java.io.BufferedReader;
 
@@ -34,7 +34,8 @@ public class MazeMaster {
 		JSONObject photosOBJ = json.getJSONObject("Mazes");
 		JSONArray arr=photosOBJ.getJSONArray("Maze");
 		for (int i = 0; i < arr.length(); i++) {
-			_mazeMap.put(arr.getJSONObject(i).getString("Name"), new Maze(arr.getJSONObject(i)));
+			Maze m=new Maze(arr.getJSONObject(i));
+			_mazeMap.put(m.get_mazeName(), m);
 		}
 	}
 

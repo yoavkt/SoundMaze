@@ -13,11 +13,11 @@
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="350dp"
-        android:layout_height="389dp"
+        android:layout_width="315dp"
+        android:layout_height="232dp"
         android:layout_marginLeft="2dp"
         android:layout_marginTop="2dp"
-        android:layout_weight="0.81"
-        android:src="@drawable/index" />
+        android:layout_weight="0.02"
+        android:src="@drawable/mz1" />
 
 </LinearLayout>

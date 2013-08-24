@@ -1,5 +1,9 @@
 package com.example.soundmaze;
 
+import java.io.IOException;
+
+import org.json.JSONException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +17,18 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		
+		try {
+			MazeMaster m=MazeMaster.getMazeMaster(this.getApplicationContext());
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		final Button btnMaze1 = (Button) findViewById(R.id.btnMainMaze1);
 		btnMaze1.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
