@@ -34,8 +34,8 @@ public class MainActivity extends Activity {
 		btnMaze1.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent myIntent = new Intent(MainActivity.this,
-						MazeActivity.class);
-				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 1")); // Optional
+						Game.class);
+				//myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 1")); // Optional
 																	// parameters
 				MainActivity.this.startActivity(myIntent);
 			}

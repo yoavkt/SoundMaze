@@ -1,6 +1,10 @@
 package com.example.soundmaze;
 
 
+import java.io.IOException;
+
+import org.json.JSONException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,11 +24,22 @@ public class MazeActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_maze);
-		Intent intent = getIntent();
-		Bundle extras = intent.getExtras();
-		Maze maze = (Maze)extras.get("maze");
-		MazeView view = new MazeView(this,maze);
-		setContentView(view);
+		//Intent intent = getIntent();
+		//Bundle extras = intent.getExtras();
+		//Maze maze = (Maze)extras.get("maze");
+		MazeMaster m;
+		try {
+			m = new MazeMaster(this.getApplicationContext());
+			MazeView view = new MazeView(this,m.getMaze("Maze 1"));
+			setContentView(view);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		//Maze playMaze=MazeMaster.getMaze("Maze 1");
 		//ImageView img =(ImageView) findViewById(R.id.imageView1);
 		//Maze maze = (Maze)extras.get("maze");

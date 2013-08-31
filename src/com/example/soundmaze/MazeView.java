@@ -37,11 +37,12 @@ public class MazeView extends View {
 	}
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		width = (w < h)?w:h;
-		height = width;         //for now square mazes
+		height=width;
+		//for now square mazes
 		lineWidth = 1;          //for now 1 pixel wide walls
-		cellWidth = (width - ((float)_maze.get_mazeColNum()*lineWidth)); // mazeSizeX;
+		cellWidth = (width - ((float)_maze.get_mazeColNum()*lineWidth)) / _maze.get_mazeColNum();
 		totalCellWidth = cellWidth+lineWidth;
-		cellHeight = (height - ((float)_maze.get_mazeRowNum()*lineWidth)); // mazeSizeY;
+		cellHeight = (height - ((float)_maze.get_mazeRowNum()*lineWidth)) / (float)_maze.get_mazeRowNum();
 		totalCellHeight = cellHeight+lineWidth;
 		red.setTextSize(cellHeight*0.75f);
 		super.onSizeChanged(w, h, oldw, oldh);
@@ -49,8 +50,8 @@ public class MazeView extends View {
 	protected void onDraw(Canvas canvas) {
 		canvas.drawRect(0, 0, width, height, background);
 		drawWalls(canvas);
-		drawPlayer(canvas);
-		drawEndPoint(canvas);
+	//	drawPlayer(canvas);
+	//	drawEndPoint(canvas);
 	}
 	public void drawPlayer(Canvas canvas)
 	{
