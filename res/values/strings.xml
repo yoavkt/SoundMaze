@@ -16,7 +16,12 @@
     <string name="title_activity_top_scores">TopScoresActivity</string>
     <string name="title_activity_instruct">InstructActivity</string>
 
-
+    <string name="btn_newgame">New Game</string>
+    <string name="btn_exit">Exit</string>
+    <string name="levelSelect">Select Maze</string>
+    <string name="finished_title">Congrats</string>
+    <string name="finished_text">Level Cleared</string>
+    <string name="finished_button">End Game</string>
 	    
   <string name="clientKey">x82a1ESNRRwLBDsRdmkd0P9N7aq2OOevxehB2vGx</string>
     <string name="parseApplication">jt3CvTBVI3BUluWcxL8AgBzMtrhJEWwhnRSTqwrD</string>

@@ -8,8 +8,8 @@
 		"startRow":0,
 		"rowNum":10,
 		"colNum":10,
-		"endRow":10,
-		"endCol":10,
+		"endRow":9,
+		"endCol":9,
 		"Vertical": [   
 					[false,false,false,false,false,false,false,false,false,false],
 					[false,false,false,false,false,false,false,false,true,false],

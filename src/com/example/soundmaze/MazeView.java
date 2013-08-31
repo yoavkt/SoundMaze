@@ -1,11 +1,13 @@
 package com.example.soundmaze;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 
 public class MazeView extends View {
@@ -99,16 +101,16 @@ public class MazeView extends View {
 		boolean moved = false;
 		switch(keyCode) {
 			case KeyEvent.KEYCODE_DPAD_UP:
-				moved = maze.move(Maze.UP);
+				moved = _maze.move(Maze.UP);
 				break;
 			case KeyEvent.KEYCODE_DPAD_DOWN:
-				moved = maze.move(Maze.DOWN);
+				moved = _maze.move(Maze.DOWN);
 				break;
 			case KeyEvent.KEYCODE_DPAD_RIGHT:
-				moved = maze.move(Maze.RIGHT);
+				moved = _maze.move(Maze.RIGHT);
 				break;
 			case KeyEvent.KEYCODE_DPAD_LEFT:
-				moved = maze.move(Maze.LEFT);
+				moved = _maze.move(Maze.LEFT);
 				break;
 			default:
 				return super.onKeyDown(keyCode,evt);
@@ -116,10 +118,10 @@ public class MazeView extends View {
 		if(moved) {
 			//the ball was moved so we'll redraw the view
 			invalidate();
-			if(maze.isGameComplete()) {
-				AlertDialog.Builder builder = new AlertDialog.Builder(context);
-				builder.setTitle(context.getText(R.string.finished_title));
-				LayoutInflater inflater = context.getLayoutInflater();
+			if(_maze.winMaze()) {
+				/*AlertDialog.Builder builder = new AlertDialog.Builder(_gameContext);
+				builder.setTitle(_gameContext.getText(R.string.finished_title));
+				LayoutInflater inflater = _gameContext.getLayoutInflater();
 				View view = inflater.inflate(R.layout.finish, null);
 				builder.setView(view);
 				View closeButton =view.findViewById(R.id.closeGame);
@@ -132,7 +134,7 @@ public class MazeView extends View {
 					}
 				});
 				AlertDialog finishDialog = builder.create();
-				finishDialog.show();
+				finishDialog.show();*/
 			}
 		}
 		return true;
