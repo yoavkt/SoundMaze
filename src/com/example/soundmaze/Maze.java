@@ -10,7 +10,9 @@ public class Maze {
 
 	String _mazeName;
 	mazeCell[][] _mazeMap;
-	Point _pointStart;
+	boolean[][] _verticalWall;
+	boolean[][] _horizontalWall;
+	Point _currentPoint;
 	Point _pointEnd;
 	String _mazeImageName;
 	
@@ -19,7 +21,7 @@ public class Maze {
 			Point pointEnd,String mazeImageName) {
 		_mazeName = mazeName;
 		_mazeMap = mazeMap;
-		_pointStart = pointStart;
+		_currentPoint = pointStart;
 		_pointEnd = pointEnd;
 		_mazeImageName=mazeImageName;
 	}
@@ -27,12 +29,17 @@ public class Maze {
 	public Maze(JSONObject jsonObject) throws JSONException {
 		
 		_mazeMap=new mazeCell[jsonObject.getInt("rowNum")][jsonObject.getInt("colNum")];
-		_pointStart=new Point(jsonObject.getInt("startRow"),jsonObject.getInt("startCol"));
+		_currentPoint=new Point(jsonObject.getInt("startRow"),jsonObject.getInt("startCol"));
 		_pointEnd=new Point(jsonObject.getInt("endRow"),jsonObject.getInt("endCol"));
-		JSONArray rowsArr=jsonObject.getJSONArray("Rows");
+		JSONArray rowsArr=jsonObject.getJSONArray("Vertical");
 		for (int i = 0; i < rowsArr.length(); i++) {
 				for (int j = 0; j < jsonObject.getInt("colNum"); j++)
-					_mazeMap[i][j]=new mazeCell( rowsArr.getJSONArray(i).getInt(j));
+					_verticalWall[i][j]=rowsArr.getJSONArray(i).getBoolean(j);
+		}
+		JSONArray colsArr=jsonObject.getJSONArray("Horizontal");
+		for (int i = 0; i < colsArr.length(); i++) {
+				for (int j = 0; j < jsonObject.getInt("rowNum"); j++)
+					_horizontalWall[i][j]=rowsArr.getJSONArray(i).getBoolean(j);
 		}
 		_mazeName=jsonObject.getString("Name");
 	}
@@ -40,15 +47,24 @@ public class Maze {
 		return _mazeName;
 	}
 	public boolean legalMove(Point from, Point to) {
-		mazeCell m = _mazeMap[from.x][from.y];
+		//Left move
+		try{
 		if (from.x == to.x && from.y == to.y - 1)
-			return m.canMoveRight();
+			return _verticalWall[from.x][from.y];
+		//Right Move
 		if (from.x == to.x && from.y - 1 == to.y)
-			return m.canMoveLeft();
+			return _verticalWall[from.x+1][from.y];
+		// Down move
 		if (from.x == to.x - 1 && from.y == to.y)
-			return m.canMoveDown();
+			return _horizontalWall[from.x][from.y+1];
+		//Up move
 		if (from.x - 1 == to.x && from.y == to.y)
-			return m.canMoveUp();
+			return _horizontalWall[from.x][from.y];
+		}
+		catch (ArrayIndexOutOfBoundsException e)
+		{
+			return false;
+		}
 		return false;
 	}
 
