@@ -9,26 +9,35 @@ import android.graphics.Point;
 public class Maze {
 
 	String _mazeName;
-	mazeCell[][] _mazeMap;
 	boolean[][] _verticalWall;
 	boolean[][] _horizontalWall;
 	Point _currentPoint;
 	Point _pointEnd;
 	String _mazeImageName;
-	
-
-	public Maze(String mazeName, mazeCell[][] mazeMap, Point pointStart,
-			Point pointEnd,String mazeImageName) {
-		_mazeName = mazeName;
-		_mazeMap = mazeMap;
-		_currentPoint = pointStart;
-		_pointEnd = pointEnd;
-		_mazeImageName=mazeImageName;
+	int _mazeColNum;
+	int _mazeRowNum;
+	public int get_mazeColNum() {
+		return _mazeColNum;
 	}
-
+	public int get_mazeRowNum() {
+		return _mazeRowNum;
+	}
+	public boolean[][] get_horizontalWall() {
+		return _horizontalWall;
+	}
+	public boolean[][] get_verticalWall() {
+		return _verticalWall;
+	}
+	public Point get_currentPoint() {
+		return _currentPoint;
+	}
+	public Point get_pointEnd() {
+		return _pointEnd;
+	}
 	public Maze(JSONObject jsonObject) throws JSONException {
 		
-		_mazeMap=new mazeCell[jsonObject.getInt("rowNum")][jsonObject.getInt("colNum")];
+		_verticalWall=new boolean[_mazeRowNum=jsonObject.getInt("rowNum")][_mazeColNum=jsonObject.getInt("colNum")];
+		_horizontalWall=new boolean[_mazeRowNum][_mazeColNum];
 		_currentPoint=new Point(jsonObject.getInt("startRow"),jsonObject.getInt("startCol"));
 		_pointEnd=new Point(jsonObject.getInt("endRow"),jsonObject.getInt("endCol"));
 		JSONArray rowsArr=jsonObject.getJSONArray("Vertical");
