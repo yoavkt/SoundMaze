@@ -35,6 +35,10 @@
             android:name="com.example.soundmaze.InstructActivity"
             android:label="@string/title_activity_instruct" >
         </activity>
+        <activity
+            android:name="com.example.soundmaze.Game"
+            android:label="@string/title_activity_game" >
+        </activity>
     </application>
 
 </manifest>

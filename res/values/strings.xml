@@ -5,7 +5,9 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="maze_1_name">Maze 1</string>
+
     <color name="light_black">#646464</color>
+
     <string name="myBackground">Hello world!</string>
     <string name="maze_2_name">Maze 2</string>
     <string name="top_scores">Top Scores</string>
@@ -13,10 +15,16 @@
     <string name="title_activity_maze">MazeActivity</string>
     <string name="title_activity_top_scores">TopScoresActivity</string>
     <string name="title_activity_instruct">InstructActivity</string>
+<<<<<<< HEAD
 	<string name="t1"> <string name="t3">InstructActivity</string>
 	    
   <string name="clientKey">x82a1ESNRRwLBDsRdmkd0P9N7aq2OOevxehB2vGx</string>
     <string name="parseApplication">jt3CvTBVI3BUluWcxL8AgBzMtrhJEWwhnRSTqwrD</string>
 	
 	 </string>
+=======
+    <string name="t1"><string name="t3">InstructActivity</string></string>
+    <string name="title_activity_game">Game</string>
+
+>>>>>>> 749914c0fed5b42e5288de4ad5028e7d82201d45
 </resources>
