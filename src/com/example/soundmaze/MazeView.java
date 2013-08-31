@@ -82,7 +82,7 @@ public class MazeView extends View {
 									y + cellHeight,  //stop Y
 									line);
 				}
-				if(i < _maze.get_mazeColNum() - 1 && _maze.get_verticalWall()[i][j]) {
+				if(i < _maze.get_mazeColNum() - 1 && _maze.get_horizontalWall()[i][j]) {
 					//we'll draw a horizontal line
 					canvas.drawLine(x,               //startX 
 									y + cellHeight,  //startY 
