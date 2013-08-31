@@ -1,13 +1,17 @@
 package com.example.soundmaze;
 
+import java.io.Serializable;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.graphics.Point;
 
-public class Maze {
+public class Maze implements Serializable {
 
+	
+	private static final long serialVersionUID = 1L;
 	String _mazeName;
 	boolean[][] _verticalWall;
 	boolean[][] _horizontalWall;

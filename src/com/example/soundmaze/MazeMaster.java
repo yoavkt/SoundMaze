@@ -17,17 +17,15 @@ import android.content.res.AssetManager;
 
 public class MazeMaster {
 
-	static boolean created = false;
-	static MazeMaster instance;
-	private static Context _con;
-	static private HashMap<String, Maze> _mazeMap;
+	 boolean created = false;
+	 MazeMaster instance;
+	private  Context _con;
+	 private HashMap<String, Maze> _mazeMap;
 	
 	
-	private MazeMaster(Context con) throws JSONException, IOException {
+	public MazeMaster(Context con) throws JSONException, IOException {
 		_mazeMap=new HashMap<String, Maze>();
 		_con=con;
-		
-		
 		JSONObject json= new JSONObject(loadJSONString());
 		JSONObject photosOBJ = json.getJSONObject("Mazes");
 		JSONArray arr=photosOBJ.getJSONArray("Maze");
@@ -37,12 +35,12 @@ public class MazeMaster {
 		}
 	}
 
-	public static MazeMaster getMazeMaster(Context con) throws JSONException, IOException {
-		if (!created)
-			instance = new MazeMaster(con);
-		return instance;
-	}
-	public static Maze getMaze(String name){
+	//public  MazeMaster getMazeMaster(Context con) throws JSONException, IOException {
+//		if (!created)
+	//		instance = new MazeMaster(con);
+	//	return instance;
+//	}
+	public  Maze getMaze(String name){
 		return _mazeMap.get(name);
 	}
 	

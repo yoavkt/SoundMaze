@@ -12,14 +12,15 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
-
+	
+	MazeMaster myMazeMaster;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
 		try {
-			MazeMaster myMazeMaster=MazeMaster.getMazeMaster(this.getApplicationContext());
+			 myMazeMaster=new MazeMaster(this.getApplicationContext());
 			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -34,7 +35,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				Intent myIntent = new Intent(MainActivity.this,
 						MazeActivity.class);
-				myIntent.putExtra("maze", R.string.maze_1_name); // Optional
+				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 1")); // Optional
 																	// parameters
 				MainActivity.this.startActivity(myIntent);
 			}

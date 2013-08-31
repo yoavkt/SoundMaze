@@ -21,11 +21,15 @@ public class MazeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_maze);
 		Intent intent = getIntent();
-		Maze playMaze=MazeMaster.getMaze("Maze 1");
+		Bundle extras = intent.getExtras();
+		Maze maze = (Maze)extras.get("maze");
+		MazeView view = new MazeView(this,maze);
+		setContentView(view);
+		//Maze playMaze=MazeMaster.getMaze("Maze 1");
 		//ImageView img =(ImageView) findViewById(R.id.imageView1);
 		//Maze maze = (Maze)extras.get("maze");
-		MazeView view = new MazeView(this,playMaze);
-		setContentView(view);
+		//MazeView view = new MazeView(this,playMaze);
+	//	setContentView(view);
 		//img.setImageResource(R.drawable.mz2);
 		
 		/*final Button btnMaze1 = (Button) findViewById(R.id.btnMove);
@@ -40,6 +44,7 @@ public class MazeActivity extends Activity {
 				
 			}
 		});*/
+		//tttttttttttttttttttttttttttttttttttttttttttttttttttttaaaaaaaaaaaaaaaaaaaaaammmmmmmmmmmmmmmmmmmmmmmmaaaaaaaaaaaaaaaaaaaaaarrrrrrrrrrrrrrrrrrrrrrrrrrrr        
 	}
 
 	@Override
