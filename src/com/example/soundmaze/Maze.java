@@ -52,7 +52,7 @@ public class Maze implements Serializable {
 		JSONArray colsArr=jsonObject.getJSONArray("Horizontal");
 		for (int i = 0; i < colsArr.length(); i++) {
 				for (int j = 0; j < jsonObject.getInt("rowNum"); j++)
-					_horizontalWall[i][j]=rowsArr.getJSONArray(i).getBoolean(j);
+					_horizontalWall[i][j]=colsArr.getJSONArray(i).getBoolean(j);
 		}
 		_mazeName=jsonObject.getString("Name");
 	}

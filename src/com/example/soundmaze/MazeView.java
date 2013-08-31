@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.view.View;
 
 public class MazeView extends View {
@@ -31,7 +32,7 @@ public class MazeView extends View {
 		red = new Paint();
 		red.setColor(getResources().getColor(R.color.ball));
 		background = new Paint();
-		background.setColor(getResources().getColor(R.color.ball));
+		background.setColor(getResources().getColor(R.color.board));
 		setFocusable(true);
 		this.setFocusableInTouchMode(true);
 	}
@@ -50,8 +51,8 @@ public class MazeView extends View {
 	protected void onDraw(Canvas canvas) {
 		canvas.drawRect(0, 0, width, height, background);
 		drawWalls(canvas);
-	//	drawPlayer(canvas);
-	//	drawEndPoint(canvas);
+		drawPlayer(canvas);
+		drawEndPoint(canvas);
 	}
 	public void drawPlayer(Canvas canvas)
 	{
@@ -69,7 +70,7 @@ public class MazeView extends View {
 	}
 	public void drawWalls(Canvas canvas)
 	{
-		
+		boolean tmp[][]=_maze.get_horizontalWall();
 		for(int i = 0; i < _maze.get_mazeRowNum(); i++) {
 			for(int j = 0; j < _maze.get_mazeColNum(); j++){
 				float x = j * totalCellWidth;
@@ -92,6 +93,49 @@ public class MazeView extends View {
 				}
 			}
 		}
+	}
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent evt) {
+		boolean moved = false;
+		switch(keyCode) {
+			case KeyEvent.KEYCODE_DPAD_UP:
+				moved = maze.move(Maze.UP);
+				break;
+			case KeyEvent.KEYCODE_DPAD_DOWN:
+				moved = maze.move(Maze.DOWN);
+				break;
+			case KeyEvent.KEYCODE_DPAD_RIGHT:
+				moved = maze.move(Maze.RIGHT);
+				break;
+			case KeyEvent.KEYCODE_DPAD_LEFT:
+				moved = maze.move(Maze.LEFT);
+				break;
+			default:
+				return super.onKeyDown(keyCode,evt);
+		}
+		if(moved) {
+			//the ball was moved so we'll redraw the view
+			invalidate();
+			if(maze.isGameComplete()) {
+				AlertDialog.Builder builder = new AlertDialog.Builder(context);
+				builder.setTitle(context.getText(R.string.finished_title));
+				LayoutInflater inflater = context.getLayoutInflater();
+				View view = inflater.inflate(R.layout.finish, null);
+				builder.setView(view);
+				View closeButton =view.findViewById(R.id.closeGame);
+				closeButton.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View clicked) {
+						if(clicked.getId() == R.id.closeGame) {
+							context.finish();
+						}
+					}
+				});
+				AlertDialog finishDialog = builder.create();
+				finishDialog.show();
+			}
+		}
+		return true;
 	}
 	
 }
