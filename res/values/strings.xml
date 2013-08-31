@@ -14,6 +14,9 @@
     <string name="title_activity_top_scores">TopScoresActivity</string>
     <string name="title_activity_instruct">InstructActivity</string>
 	<string name="t1"> <string name="t3">InstructActivity</string>
+	    
+  <string name="clientKey">x82a1ESNRRwLBDsRdmkd0P9N7aq2OOevxehB2vGx</string>
+    <string name="parseApplication">jt3CvTBVI3BUluWcxL8AgBzMtrhJEWwhnRSTqwrD</string>
 	
 	 </string>
 </resources>
