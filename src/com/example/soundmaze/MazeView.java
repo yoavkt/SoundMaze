@@ -46,6 +46,12 @@ public class MazeView extends View {
 		red.setTextSize(cellHeight*0.75f);
 		super.onSizeChanged(w, h, oldw, oldh);
 	}
+	protected void onDraw(Canvas canvas) {
+		canvas.drawRect(0, 0, width, height, background);
+		drawWalls(canvas);
+		drawPlayer(canvas);
+		drawEndPoint(canvas);
+	}
 	public void drawPlayer(Canvas canvas)
 	{
 		canvas.drawCircle((_maze.get_currentPoint().x * totalCellWidth)+(cellWidth/2),   //x of center

@@ -19,7 +19,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		try {
-			MazeMaster m=MazeMaster.getMazeMaster(this.getApplicationContext());
+			MazeMaster myMazeMaster=MazeMaster.getMazeMaster(this.getApplicationContext());
 			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
