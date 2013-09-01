@@ -41,6 +41,10 @@
             android:name="com.example.soundmaze.Game"
             android:label="@string/title_activity_game" >
         </activity>
+                <activity
+            android:name="com.example.soundmaze.AddUserActivity"
+            android:label="Add New High Score"
+            android:theme="@android:style/Theme.Dialog" />
     </application>
 
 </manifest>

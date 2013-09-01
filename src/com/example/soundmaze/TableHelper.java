@@ -138,21 +138,22 @@ public class TableHelper {
 //		return delete;
 //
 //	}
-//	public List<ITodoItem> all() { 
-//		ParseQuery query = new ParseQuery("todo");
-//		List<ITodoItem> list = new ArrayList<ITodoItem>();
-//
-//		try {
-//			for (ParseObject i :query.find()){
-//				list.add(new Task(i.getString("title"),new Date(i.getInt("due"))));
-//
-//			}
-//
-//		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//		return list;
-//	}
+	public List<User> all() { 
+		ParseQuery query = new ParseQuery("users");
+		List<User> list = new ArrayList<User>();
+
+		try {
+			for (Object i :query.find()){
+				ParseObject j=(ParseObject)i;
+				list.add(new User(j.getString("name"),j.getInt("score")));
+
+			}
+
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return list;
+	}
 }

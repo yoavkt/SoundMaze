@@ -28,5 +28,8 @@
 	
     <string name="t1">InstructActivity</string>
     <string name="title_activity_game">Game</string>
+    
+        <string name="cancel">cancel</string>
+    <string name="ok">add</string>
 
 </resources>
