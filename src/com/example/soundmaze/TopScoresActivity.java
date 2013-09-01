@@ -1,5 +1,6 @@
 package com.example.soundmaze;
 
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,8 +10,11 @@ public class TopScoresActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.activity_top_scores);
-//		TodoDAL td
+		SqlHalper helper = new SqlHalper(this);
+		TableHelper th=new TableHelper(this);
+		th.insert(new User("tamar",222));
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package com.example.soundmaze;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
+//import java.util.List;
 
 import org.json.JSONObject;
 
@@ -17,23 +18,27 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 
-public class TodoDAL {
+public class TableHelper {
 	Context _ctxt;
-	private SQLiteDatabase db;
+//	private SQLiteDatabase db;
 	boolean delete=true;
 	protected boolean update;
-	public TodoDAL(Context context) { 
+	public TableHelper(Context context) { 
+	
 		_ctxt=context;
 		Parse.initialize(_ctxt, "jt3CvTBVI3BUluWcxL8AgBzMtrhJEWwhnRSTqwrD", "x82a1ESNRRwLBDsRdmkd0P9N7aq2OOevxehB2vGx");
-		SqlHalper helper = new SqlHalper(_ctxt);
-		db = helper.getWritableDatabase();
-		ParseUser.enableAutomaticUser();
+//		SqlHalper helper = new SqlHalper(_ctxt);
+//		ParseObject testObject = new ParseObject("TestObject");
+//		testObject.put("foo", "bar");
+//		testObject.saveInBackground();
+//		db = helper.getWritableDatabase();
+//		ParseUser.enableAutomaticUser();
 	}
 	public boolean insert(User user) { 
 		if(user.getName()==null){
 			return false;
 		}
-		ParseObject parseObject = new ParseObject("todo");
+		ParseObject parseObject = new ParseObject("users");
 		parseObject.put("name", user.getName());
 		
 		
@@ -42,56 +47,58 @@ public class TodoDAL {
 			parseObject.put("score", user.getScore());
 			values.put("name", user.getScore());
 		parseObject.saveInBackground();
-		long succ=db.insert("users", null, values);
-		if(succ==-1){
-			return false;
-		}
+//		long succ=db.insert("users", null, values);
+//		if(succ==-1){
+//			return false;
+//		}
 		return true;
 	}
+
 	public boolean update(User user) {
 
 		final User t=user;
-		ParseQuery query = new ParseQuery("users");
+		ParseQuery<ParseObject> query = new ParseQuery("users");
 		query.whereEqualTo("name", user.getName());
 		update=true;
-//		query.findInBackground(new FindCallback() {
-//
-//
-//
-//			@Override
-//			void internalDone(Object arg0, ParseException arg1) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//		});
-//			@Override
-//			public void done(List<ParseObject> objects, ParseException arg1) {
-//				if (arg1!=null){
-//					arg1.printStackTrace();
-//				}
-//				else{
-//					if(objects.isEmpty()){
-//						update=false;
-//						return ;
-//					}
-//					for(ParseObject obj : objects){
-//						obj.put("score",t.getScore());
-//						obj.saveInBackground();
-//						update=true;
-//					}
-//				}
-//			}
-//		});
-		ContentValues values = new ContentValues();
-			values.put("score",user.getScore());
+		query.findInBackground(new FindCallback() {
 
-		int succ = db.update("users",values , "name=?", new String[]{user.getName()});
-		if(succ<1){
-			return false;
-		}
+
+			@Override
+			public void done(List objects, ParseException arg1) {
+				if (arg1!=null){
+					arg1.printStackTrace();
+				}
+				else{
+					if(objects.isEmpty()){
+						update=false;
+						return ;
+					}
+					for(Object obj : objects){
+						
+						ParseObject obj1=(ParseObject) obj;
+						obj1.put("score",t.getScore());
+						obj1.saveInBackground();
+						update=true;
+					}
+				}
+			}
+		});
+
+		
+//		ContentValues values = new ContentValues();
+//			values.put("score",user.getScore());
+
+//		int succ = db.update("users",values , "name=?", new String[]{user.getName()});
+//		if(succ<1){
+//			return false;
+//		}
 		return update;
 
 	}
+	
+	
+	
+	
 //	public boolean delete(ITodoItem todoItem) {
 //		//		return update(new Task(todoItem.getTitle(),new Date(2013-1900,3,10)));
 //		if(todoItem.getTitle()==null){
