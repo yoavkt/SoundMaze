@@ -113,8 +113,8 @@ public class Maze implements Serializable {
 				moved = true;
 			}
 		}
-		if(moved) 
-			return this.winMaze(_currentPoint);
+	//	if(moved) 
+		//	return this.winMaze(_currentPoint);
 		return moved;
 	}
 	public boolean winMaze() {
