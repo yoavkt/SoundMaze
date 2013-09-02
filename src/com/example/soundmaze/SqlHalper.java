@@ -7,13 +7,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class SqlHalper extends SQLiteOpenHelper {
 
 	public SqlHalper(Context context) {
-		super(context, "todo_db", null, 1);
+		super(context, "users_db", null, 1);
 	}
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL("create table todo ( _id integer primary key autoincrement,"
-				+  " title text, due integer );");
+		db.execSQL("create table users ( _id integer primary key autoincrement,"
+				+  " name text, score integer );");
 	}
 
 	@Override
