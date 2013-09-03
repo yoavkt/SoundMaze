@@ -10,9 +10,10 @@ import android.graphics.Point;
 
 public class Maze implements Serializable {
 
-	
+	private static final long serialVersionUID = 7526472295622776147L;	
 	public static final int UP = 0, DOWN = 1, RIGHT = 2, LEFT = 3;
-	//private static final long serialVersionUID = 7526472295622776147L;
+
+	
 	String _mazeName;
 	boolean[][] _verticalWall;
 	boolean[][] _horizontalWall;
@@ -21,6 +22,33 @@ public class Maze implements Serializable {
 	String _mazeImageName;
 	int _mazeColNum;
 	int _mazeRowNum;
+	public String get_mazeImageName() {
+		return _mazeImageName;
+	}
+	public void set_currentPoint(Point _currentPoint) {
+		this._currentPoint = _currentPoint;
+	}
+	public void set_horizontalWall(boolean[][] _horizontalWall) {
+		this._horizontalWall = _horizontalWall;
+	}public void set_mazeColNum(int _mazeColNum) {
+		this._mazeColNum = _mazeColNum;
+	}
+	public void set_mazeImageName(String _mazeImageName) {
+		this._mazeImageName = _mazeImageName;
+	}
+	public void set_mazeName(String _mazeName) {
+		this._mazeName = _mazeName;
+	}
+	public void set_mazeRowNum(int _mazeRowNum) {
+		this._mazeRowNum = _mazeRowNum;
+	}
+	public void set_pointEnd(Point _pointEnd) {
+		this._pointEnd = _pointEnd;
+	}
+	public void set_verticalWall(boolean[][] _verticalWall) {
+		this._verticalWall = _verticalWall;
+	}
+	
 	public int get_mazeColNum() {
 		return _mazeColNum;
 	}

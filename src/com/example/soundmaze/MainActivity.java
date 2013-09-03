@@ -27,10 +27,10 @@ public class MainActivity extends Activity {
 
 		setContentView(R.layout.activity_main);
 		
-		//tamar
+
 		th=new TableHelper(this);
-		Intent intent = new Intent(this, AddUserActivity.class);
-		startActivityForResult(intent, 1337);
+	//	Intent intent = new Intent(this, AddUserActivity.class);
+	//	startActivityForResult(intent, 1337);
 		//
 		
 		
@@ -49,9 +49,11 @@ public class MainActivity extends Activity {
 		btnMaze1.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent myIntent = new Intent(MainActivity.this,
-						Game.class);
-				//myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 1")); // Optional
-																	// parameters
+						MazeActivity.class);
+				//Bundle bundle= new Bundle();
+				
+				//bundle.putSerializable("maze", myMazeMaster.getMaze("Maze 1"));
+				//myIntent.putExtras(bundle);
 				MainActivity.this.startActivity(myIntent);
 			}
 		});
@@ -61,9 +63,12 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				Intent myIntent = new Intent(MainActivity.this,
 						MazeActivity.class);
-				myIntent.putExtra("maze", R.string.maze_2_name); // Optional
-																	// parameters
+				//Bundle bundle= new Bundle();
+				//Maze m=myMazeMaster.getMaze("Maze 2");
+				//bundle.putSerializable("maze", myMazeMaster.getMaze("Maze 2"));
+				//myIntent.putExtras(bundle);
 				MainActivity.this.startActivity(myIntent);
+			
 				
 			}
 		});
@@ -73,7 +78,6 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				Intent myIntent = new Intent(MainActivity.this,
 						TopScoresActivity.class);
-//				myIntent.getIntExtra("table", th);
 				MainActivity.this.startActivity(myIntent);
 			}
 		});

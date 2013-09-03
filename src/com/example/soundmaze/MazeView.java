@@ -3,6 +3,7 @@ package com.example.soundmaze;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
@@ -13,6 +14,7 @@ import android.view.View;
 public class MazeView extends View {
 	
 	private Maze _maze;
+	private Canvas _canvas;
 	private Activity _gameContext;
 	//width and height of the whole maze and width of lines which
 	//make the walls
@@ -25,6 +27,14 @@ public class MazeView extends View {
 	//the finishing point of the maze
 	private Paint line, red, background;
 
+	public MazeView(Context context, AttributeSet attrs) {
+		super(context,attrs);
+		_gameContext = (Activity)context;
+		setFocusable(true);
+		this.setFocusableInTouchMode(true);
+		// TODO Auto-generated constructor stub
+	}
+	
 	public MazeView(Context context, Maze maze) {
 		super(context);
 		_gameContext = (Activity)context;
@@ -35,12 +45,18 @@ public class MazeView extends View {
 		red.setColor(getResources().getColor(R.color.ball));
 		background = new Paint();
 		background.setColor(getResources().getColor(R.color.board));
-		setFocusable(true);
-		this.setFocusableInTouchMode(true);
+		
+
 	}
-	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-		width = (w < h)?w:h;
-		height=width;
+	public void setMaze(Maze maze)
+	{
+		_maze = maze;
+		line = new Paint();
+		line.setColor(getResources().getColor(R.color.wall));
+		red = new Paint();
+		red.setColor(getResources().getColor(R.color.ball));
+		background = new Paint();
+		background.setColor(getResources().getColor(R.color.board));
 		//for now square mazes
 		lineWidth = 1;          //for now 1 pixel wide walls
 		cellWidth = (width - ((float)_maze.get_mazeColNum()*lineWidth)) / _maze.get_mazeColNum();
@@ -48,13 +64,33 @@ public class MazeView extends View {
 		cellHeight = (height - ((float)_maze.get_mazeRowNum()*lineWidth)) / (float)_maze.get_mazeRowNum();
 		totalCellHeight = cellHeight+lineWidth;
 		red.setTextSize(cellHeight*0.75f);
+		draw(_canvas);
+		
+	}
+	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+		
+		width = (w < h)?w:h;
+		height=width;
+		/*
+		//for now square mazes
+		lineWidth = 1;          //for now 1 pixel wide walls
+		cellWidth = (width - ((float)_maze.get_mazeColNum()*lineWidth)) / _maze.get_mazeColNum();
+		totalCellWidth = cellWidth+lineWidth;
+		cellHeight = (height - ((float)_maze.get_mazeRowNum()*lineWidth)) / (float)_maze.get_mazeRowNum();
+		totalCellHeight = cellHeight+lineWidth;
+		red.setTextSize(cellHeight*0.75f);
+		*/
 		super.onSizeChanged(w, h, oldw, oldh);
+		
 	}
 	protected void onDraw(Canvas canvas) {
+		_canvas=canvas;
+		if (_maze!=null){
 		canvas.drawRect(0, 0, width, height, background);
 		drawWalls(canvas);
 		drawPlayer(canvas);
 		drawEndPoint(canvas);
+		}
 	}
 	public void drawPlayer(Canvas canvas)
 	{
@@ -98,8 +134,14 @@ public class MazeView extends View {
 	}
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent evt) {
+		return movementUpdater(keyCode);
+	}
+	
+	//TODO this is the method you simply use with your voice control
+	public boolean movementUpdater(int moveCode)
+	{
 		boolean moved = false;
-		switch(keyCode) {
+		switch(moveCode) {
 			case KeyEvent.KEYCODE_DPAD_UP:
 				moved = _maze.move(Maze.UP);
 				break;
@@ -113,28 +155,16 @@ public class MazeView extends View {
 				moved = _maze.move(Maze.LEFT);
 				break;
 			default:
-				return super.onKeyDown(keyCode,evt);
+				return false;
 		}
 		if(moved) {
 			//the ball was moved so we'll redraw the view
 			invalidate();
 			if(_maze.winMaze()) {
-				/*AlertDialog.Builder builder = new AlertDialog.Builder(_gameContext);
-				builder.setTitle(_gameContext.getText(R.string.finished_title));
-				LayoutInflater inflater = _gameContext.getLayoutInflater();
-				View view = inflater.inflate(R.layout.finish, null);
-				builder.setView(view);
-				View closeButton =view.findViewById(R.id.closeGame);
-				closeButton.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View clicked) {
-						if(clicked.getId() == R.id.closeGame) {
-							context.finish();
-						}
-					}
-				});
-				AlertDialog finishDialog = builder.create();
-				finishDialog.show();*/
+			
+				Intent myIntent = new Intent(_gameContext,
+						AddUserActivity.class);
+				_gameContext.startActivity(myIntent);
 			}
 		}
 		return true;

@@ -35,11 +35,6 @@ public class MazeMaster {
 		}
 	}
 
-	//public  MazeMaster getMazeMaster(Context con) throws JSONException, IOException {
-//		if (!created)
-	//		instance = new MazeMaster(con);
-	//	return instance;
-//	}
 	public  Maze getMaze(String name){
 		return _mazeMap.get(name);
 	}
