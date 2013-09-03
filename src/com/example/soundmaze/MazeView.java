@@ -6,10 +6,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 
 public class MazeView extends View {
 	
@@ -30,6 +34,7 @@ public class MazeView extends View {
 	public MazeView(Context context, AttributeSet attrs) {
 		super(context,attrs);
 		_gameContext = (Activity)context;
+		
 		setFocusable(true);
 		this.setFocusableInTouchMode(true);
 		// TODO Auto-generated constructor stub
@@ -51,6 +56,18 @@ public class MazeView extends View {
 	public void setMaze(Maze maze)
 	{
 		_maze = maze;
+		this.getWidth();
+		width = (this.getWidth() < this.getHeight())?this.getWidth():this.getHeight();
+		
+		width=300;
+		height=width;
+		lineWidth = 1;          //for now 1 pixel wide walls
+		cellWidth = (width - ((float)_maze.get_mazeColNum()*lineWidth)) / _maze.get_mazeColNum();
+		totalCellWidth = cellWidth+lineWidth;
+		cellHeight = (height - ((float)_maze.get_mazeRowNum()*lineWidth)) / (float)_maze.get_mazeRowNum();
+		totalCellHeight = cellHeight+lineWidth;
+		
+		
 		line = new Paint();
 		line.setColor(getResources().getColor(R.color.wall));
 		red = new Paint();
@@ -58,13 +75,9 @@ public class MazeView extends View {
 		background = new Paint();
 		background.setColor(getResources().getColor(R.color.board));
 		//for now square mazes
-		lineWidth = 1;          //for now 1 pixel wide walls
-		cellWidth = (width - ((float)_maze.get_mazeColNum()*lineWidth)) / _maze.get_mazeColNum();
-		totalCellWidth = cellWidth+lineWidth;
-		cellHeight = (height - ((float)_maze.get_mazeRowNum()*lineWidth)) / (float)_maze.get_mazeRowNum();
-		totalCellHeight = cellHeight+lineWidth;
+		
 		red.setTextSize(cellHeight*0.75f);
-		draw(_canvas);
+		this.drawableStateChanged();
 		
 	}
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
@@ -84,7 +97,9 @@ public class MazeView extends View {
 		
 	}
 	protected void onDraw(Canvas canvas) {
-		_canvas=canvas;
+	//	super.draw(canvas);
+		
+		//_canvas=canvas;
 		if (_maze!=null){
 		canvas.drawRect(0, 0, width, height, background);
 		drawWalls(canvas);
@@ -161,9 +176,10 @@ public class MazeView extends View {
 			//the ball was moved so we'll redraw the view
 			invalidate();
 			if(_maze.winMaze()) {
-			
+			//here i am sending you the score.
 				Intent myIntent = new Intent(_gameContext,
 						AddUserActivity.class);
+				myIntent.putExtra("score", 500);
 				_gameContext.startActivity(myIntent);
 			}
 		}

@@ -36,7 +36,7 @@ public class MazeActivity extends Activity {
 		//	MazeView view = new MazeView(this,m.getMaze("Maze 1"));
 			
 			myMazeView.setMaze(m.getMaze("Maze 1"));
-			
+			myMazeView.movementUpdater(5);
 		//	setContentView(view);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
