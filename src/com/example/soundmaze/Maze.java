@@ -10,8 +10,9 @@ import android.graphics.Point;
 
 public class Maze implements Serializable {
 
+	
 	public static final int UP = 0, DOWN = 1, RIGHT = 2, LEFT = 3;
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 7526472295622776147L;
 	String _mazeName;
 	boolean[][] _verticalWall;
 	boolean[][] _horizontalWall;
