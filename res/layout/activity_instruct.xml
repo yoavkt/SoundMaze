@@ -8,5 +8,26 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/light_black"
     tools:context=".InstructActivity" >
+    <TextView
+            android:id="@+id/tvFeedback"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Perfect!"
+            android:textColor="@color/red"
+            android:textSize="@dimen/textSizeMainFeedback" />
 
+        <com.example.soundmaze.MicButton
+            android:id="@+id/buttonMicrophone"
+            android:layout_width="@dimen/heightMainMic"
+            android:layout_height="@dimen/heightMainMic"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_mic"
+            android:contentDescription="@string/buttonMicrophoneContentDescription"
+            android:gravity="center"
+            android:padding="20dp"
+            android:src="@drawable/ic_btn_speak_now" />
 </RelativeLayout>
