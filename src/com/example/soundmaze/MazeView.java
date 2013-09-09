@@ -12,7 +12,6 @@ import android.view.View;
 public class MazeView extends View {
 	
 	private Maze _maze;
-	private Canvas _canvas;
 	private Activity _gameContext;
 	//width and height of the whole maze and width of lines which
 	//make the walls
@@ -28,65 +27,64 @@ public class MazeView extends View {
 	public MazeView(Context context, AttributeSet attrs) {
 		super(context,attrs);
 		_gameContext = (Activity)context;
-		
 		setFocusable(true);
 		this.setFocusableInTouchMode(true);
-		// TODO Auto-generated constructor stub
+		setDisplayItmes();
+		
 	}
 	
 	public MazeView(Context context, Maze maze) {
 		super(context);
 		_gameContext = (Activity)context;
 		_maze = maze;
+		setDisplayItmes();
+		
+	}
+	private void setDisplayItmes()
+	{
 		line = new Paint();
 		line.setColor(getResources().getColor(R.color.wall));
 		red = new Paint();
 		red.setColor(getResources().getColor(R.color.ball));
 		background = new Paint();
 		background.setColor(getResources().getColor(R.color.board));
-		
-
-	}
+		}
 	public void setMaze(Maze maze)
 	{
 		_maze = maze;
-		this.getWidth();
+	/*	this.getWidth();
 		width = (this.getWidth() < this.getHeight())?this.getWidth():this.getHeight();
 		
 		width=300;
 		height=width;
+		
 		lineWidth = 1;          //for now 1 pixel wide walls
 		cellWidth = (width - ((float)_maze.get_mazeColNum()*lineWidth)) / _maze.get_mazeColNum();
 		totalCellWidth = cellWidth+lineWidth;
 		cellHeight = (height - ((float)_maze.get_mazeRowNum()*lineWidth)) / (float)_maze.get_mazeRowNum();
 		totalCellHeight = cellHeight+lineWidth;
 		
-		
-		line = new Paint();
-		line.setColor(getResources().getColor(R.color.wall));
-		red = new Paint();
-		red.setColor(getResources().getColor(R.color.ball));
-		background = new Paint();
-		background.setColor(getResources().getColor(R.color.board));
 		//for now square mazes
 		
 		red.setTextSize(cellHeight*0.75f);
 		this.drawableStateChanged();
+		*/
 		
 	}
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		
 		width = (w < h)?w:h;
 		height=width;
-		/*
-		//for now square mazes
 		lineWidth = 1;          //for now 1 pixel wide walls
 		cellWidth = (width - ((float)_maze.get_mazeColNum()*lineWidth)) / _maze.get_mazeColNum();
 		totalCellWidth = cellWidth+lineWidth;
 		cellHeight = (height - ((float)_maze.get_mazeRowNum()*lineWidth)) / (float)_maze.get_mazeRowNum();
 		totalCellHeight = cellHeight+lineWidth;
+		
+		//for now square mazes
+		
 		red.setTextSize(cellHeight*0.75f);
-		*/
+		this.drawableStateChanged();
 		super.onSizeChanged(w, h, oldw, oldh);
 		
 	}
@@ -117,7 +115,6 @@ public class MazeView extends View {
 	}
 	public void drawWalls(Canvas canvas)
 	{
-		boolean tmp[][]=_maze.get_horizontalWall();
 		for(int i = 0; i < _maze.get_mazeRowNum(); i++) {
 			for(int j = 0; j < _maze.get_mazeColNum(); j++){
 				float x = j * totalCellWidth;
@@ -146,7 +143,6 @@ public class MazeView extends View {
 		return movementUpdater(keyCode);
 	}
 	
-	//TODO this is the method you simply use with your voice control
 	public boolean movementUpdater(int moveCode)
 	{
 		boolean moved = false;
