@@ -1,18 +1,13 @@
 package com.example.soundmaze;
 
 import java.io.IOException;
-import java.util.Date;
 
 import org.json.JSONException;
 
-import com.parse.Parse;
-import com.parse.ParseObject;
-import com.parse.ParseAnalytics;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -29,7 +24,7 @@ public class MainActivity extends Activity {
 		
 
 		th=new TableHelper(this);
-	//	Intent intent = new Intent(this, AddUserActivity.class);
+		Intent intent = new Intent(this, AddUserActivity.class);
 	//	startActivityForResult(intent, 1337);
 		//
 		
@@ -54,6 +49,7 @@ public class MainActivity extends Activity {
 				
 				//bundle.putSerializable("maze", myMazeMaster.getMaze("Maze 1"));
 				//myIntent.putExtras(bundle);
+				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 1"));
 				MainActivity.this.startActivity(myIntent);
 			}
 		});
@@ -63,10 +59,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				Intent myIntent = new Intent(MainActivity.this,
 						MazeActivity.class);
-				//Bundle bundle= new Bundle();
-				//Maze m=myMazeMaster.getMaze("Maze 2");
-				//bundle.putSerializable("maze", myMazeMaster.getMaze("Maze 2"));
-				//myIntent.putExtras(bundle);
+				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 1"));
 				MainActivity.this.startActivity(myIntent);
 			
 				

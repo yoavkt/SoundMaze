@@ -7,10 +7,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.graphics.Point;
+import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Maze implements Serializable {
+public class Maze implements Parcelable  {
 
-	private static final long serialVersionUID = 7526472295622776147L;	
+	
 	public static final int UP = 0, DOWN = 1, RIGHT = 2, LEFT = 3;
 
 	
@@ -66,6 +69,20 @@ public class Maze implements Serializable {
 	}
 	public Point get_pointEnd() {
 		return _pointEnd;
+	}
+	
+	public Maze(Parcel in){
+		_currentPoint=new Point(in.readInt(),in.readInt());
+		_pointEnd=new Point(in.readInt(), in.readInt());
+		_mazeName=in.readString();
+		_mazeColNum=in.readInt();
+		_mazeRowNum=in.readInt();
+		_verticalWall=new boolean [_mazeRowNum][_mazeColNum];
+		for (int r = 0; r < _mazeRowNum; r++) 
+				in.readBooleanArray(_verticalWall[r]);
+		_horizontalWall=new boolean [_mazeRowNum][_mazeColNum];
+		for (int r = 0; r < _mazeRowNum; r++) 
+			in.readBooleanArray(_horizontalWall[r]);
 	}
 	public Maze(JSONObject jsonObject) throws JSONException {
 		
@@ -152,5 +169,36 @@ public class Maze implements Serializable {
 	public boolean winMaze(Point loc) {
 		return loc.equals(_pointEnd);
 	}
+	@Override
+	public int describeContents() {
+		
+		return 0;
+	}
+	@Override
+	public void writeToParcel(Parcel out, int flag) {
+		
+		out.writeInt(_currentPoint.x);
+		out.writeInt(_currentPoint.y);
+		out.writeInt(_pointEnd.x);
+		out.writeInt(_pointEnd.y);
+		out.writeString(_mazeName);
+		out.writeInt(_mazeColNum);
+		out.writeInt(_mazeRowNum);
+		//TODO make sure that you do not flip the array here 
+		for (int i = 0; i < _verticalWall.length; i++) 
+				out.writeBooleanArray(_verticalWall[i]);		
+		for (int i = 0; i < _horizontalWall.length; i++) 
+			out.writeBooleanArray(_horizontalWall[i]);		
+	}
+	public static final Parcelable.Creator<Maze> CREATOR = new Parcelable.Creator<Maze>() {
+	     public Maze createFromParcel(Parcel in) {
+	         return new Maze(in);
+	     }
+
+	     public Maze[] newArray(int size) {
+	         return new Maze[size];
+	     }
+	 };
+
 
 }

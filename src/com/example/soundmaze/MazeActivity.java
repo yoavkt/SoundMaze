@@ -8,13 +8,7 @@ import org.json.JSONException;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.view.Menu;
-import android.view.View;
-
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 
 public class MazeActivity extends Activity {
 
@@ -24,29 +18,10 @@ public class MazeActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_maze);
-	//	Intent intent = getIntent();
-	//	Bundle extras = intent.getExtras();
-	//	Maze maze = (Maze)extras.getSerializable("maze");
-	//	MazeView view = new MazeView(this,maze);
-	//	setContentView(view);
+		Intent in= this.getIntent();
+		Maze m1 = (Maze)in.getParcelableExtra("maze");
 		MazeView myMazeView = (MazeView) this.findViewById(R.id.mazeView);
-		MazeMaster m;
-		try {
-			m = new MazeMaster(this.getApplicationContext());
-		//	MazeView view = new MazeView(this,m.getMaze("Maze 1"));
-			
-			myMazeView.setMaze(m.getMaze("Maze 1"));
-			myMazeView.movementUpdater(5);
-		//	setContentView(view);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		 
+		myMazeView.setMaze(m1);
 	}
 
 	@Override

@@ -1,41 +1,24 @@
 package com.example.soundmaze;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
-import android.os.Bundle;
-import android.view.Menu;
-
-import java.io.IOException;
-import java.util.Date;
-
-import org.json.JSONException;
-
-import com.parse.Parse;
-import com.parse.ParseObject;
-import com.parse.ParseAnalytics;
-import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
+import android.content.SharedPreferences;
+import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.speech.RecognitionListener;
 import android.speech.RecognitionService;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.view.View;
 import android.widget.TextView;
-import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.ResolveInfo;
-import android.preference.PreferenceManager;
+
 import com.example.soundmaze.Constants.State;
-import java.util.ArrayList;
-import java.util.List;
 
 
 
