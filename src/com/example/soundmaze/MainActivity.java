@@ -14,7 +14,6 @@ import android.widget.Button;
 public class MainActivity extends Activity {
 	
 	MazeMaster myMazeMaster;
-	//tamar
 	TableHelper th;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +23,6 @@ public class MainActivity extends Activity {
 		
 
 		th=new TableHelper(this);
-		Intent intent = new Intent(this, AddUserActivity.class);
-	//	startActivityForResult(intent, 1337);
-		//
-		
-		
 		try {
 			 myMazeMaster=new MazeMaster(this.getApplicationContext());
 			
@@ -45,10 +39,6 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				Intent myIntent = new Intent(MainActivity.this,
 						MazeActivity.class);
-				//Bundle bundle= new Bundle();
-				
-				//bundle.putSerializable("maze", myMazeMaster.getMaze("Maze 1"));
-				//myIntent.putExtras(bundle);
 				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 1"));
 				MainActivity.this.startActivity(myIntent);
 			}
@@ -59,7 +49,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				Intent myIntent = new Intent(MainActivity.this,
 						MazeActivity.class);
-				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 1"));
+				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 2"));
 				MainActivity.this.startActivity(myIntent);
 			
 				
@@ -84,7 +74,6 @@ public class MainActivity extends Activity {
 		});
 
 	}
-	//tamar
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == 1337 && resultCode == RESULT_OK) {

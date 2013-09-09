@@ -1,9 +1,6 @@
 package com.example.soundmaze;
 
 
-import java.io.IOException;
-
-import org.json.JSONException;
 
 import android.app.Activity;
 import android.content.Intent;

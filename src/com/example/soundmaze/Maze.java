@@ -1,13 +1,12 @@
 package com.example.soundmaze;
 
-import java.io.Serializable;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.graphics.Point;
-import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -22,12 +21,10 @@ public class Maze implements Parcelable  {
 	boolean[][] _horizontalWall;
 	Point _currentPoint;
 	Point _pointEnd;
-	String _mazeImageName;
 	int _mazeColNum;
 	int _mazeRowNum;
-	public String get_mazeImageName() {
-		return _mazeImageName;
-	}
+	
+
 	public void set_currentPoint(Point _currentPoint) {
 		this._currentPoint = _currentPoint;
 	}
@@ -36,9 +33,7 @@ public class Maze implements Parcelable  {
 	}public void set_mazeColNum(int _mazeColNum) {
 		this._mazeColNum = _mazeColNum;
 	}
-	public void set_mazeImageName(String _mazeImageName) {
-		this._mazeImageName = _mazeImageName;
-	}
+
 	public void set_mazeName(String _mazeName) {
 		this._mazeName = _mazeName;
 	}
@@ -184,7 +179,6 @@ public class Maze implements Parcelable  {
 		out.writeString(_mazeName);
 		out.writeInt(_mazeColNum);
 		out.writeInt(_mazeRowNum);
-		//TODO make sure that you do not flip the array here 
 		for (int i = 0; i < _verticalWall.length; i++) 
 				out.writeBooleanArray(_verticalWall[i]);		
 		for (int i = 0; i < _horizontalWall.length; i++) 
