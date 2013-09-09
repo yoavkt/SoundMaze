@@ -52,17 +52,53 @@ public class MazeView extends View {
 	public void setMaze(Maze maze)
 	{
 		_maze = maze;
-	}
+	
+		line = new Paint();
+		line.setColor(getResources().getColor(R.color.wall));
+		red = new Paint();
+		red.setColor(getResources().getColor(R.color.ball));
+		background = new Paint();
+		background.setColor(getResources().getColor(R.color.board));
+		}
+	//public void setMaze(Maze maze)
+	//{
+//		_maze = maze;
+	/*	this.getWidth();
+		width = (this.getWidth() < this.getHeight())?this.getWidth():this.getHeight();
+		
+		width=300;
+		height=width;
+		
+		lineWidth = 1;          //for now 1 pixel wide walls
+		cellWidth = (width - ((float)_maze.get_mazeColNum()*lineWidth)) / _maze.get_mazeColNum();
+		totalCellWidth = cellWidth+lineWidth;
+		cellHeight = (height - ((float)_maze.get_mazeRowNum()*lineWidth)) / (float)_maze.get_mazeRowNum();
+		totalCellHeight = cellHeight+lineWidth;
+		
+		//for now square mazes
+		
+		red.setTextSize(cellHeight*0.75f);
+		this.drawableStateChanged();
+		*/
+		
+
+	//}
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		
 		width = (w < h)?w:h;
 		height=width;
+
 		lineWidth = 1;     
+
+		lineWidth = 1;          //for now 1 pixel wide walls
+
 		cellWidth = (width - ((float)_maze.get_mazeColNum()*lineWidth)) / _maze.get_mazeColNum();
 		totalCellWidth = cellWidth+lineWidth;
 		cellHeight = (height - ((float)_maze.get_mazeRowNum()*lineWidth)) / (float)_maze.get_mazeRowNum();
 		totalCellHeight = cellHeight+lineWidth;
 
+		
+		//for now square mazes
 		
 		red.setTextSize(cellHeight*0.75f);
 		this.drawableStateChanged();
