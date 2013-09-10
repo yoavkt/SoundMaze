@@ -30,5 +30,6 @@
     <string name="cancel">cancel</string>
     <string name="ok">add</string>
     <string name="buttonMicrophoneContentDescription">Press this button to speak a phrase</string>
+    <string name="title_activity_try">TryActivity</string>
 
 </resources>
