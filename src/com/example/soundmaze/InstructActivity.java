@@ -26,7 +26,7 @@ public class InstructActivity extends Activity {
 
 
 
-	public static final int LISTENING_TIMEOUT = 2000;
+	public static final int LISTENING_TIMEOUT = 1000;
 	private State mState = State.INIT;
 	private SharedPreferences mPrefs;
 	private MicButton mButtonMicrophone;
