@@ -5,8 +5,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="17" />
+        android:minSdkVersion="11"
+        android:targetSdkVersion="15" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -44,6 +44,12 @@
         <activity
             android:name="com.example.soundmaze.InstructActivity"
             android:label="@string/title_activity_instruct" >
+            
+                        <intent-filter>
+                <action android:name="android.speech.action.RECOGNIZE_SPEECH" />
+
+
+            </intent-filter>
         </activity>
         <activity
             android:name="com.example.soundmaze.Game"
@@ -58,6 +64,10 @@
             android:name="com.example.soundmaze.TryActivity"
             android:label="@string/title_activity_try" >
         </activity>
+                <provider
+            android:name="com.example.soundmaze.provider.BabbleContentProvider"
+            android:authorities="com.example.soundmaze.provider.BabbleContentProvider"
+            android:exported="false" />
     </application>
 
 </manifest>
