@@ -23,7 +23,7 @@ public class AddUserActivity extends Activity{
 					setResult(RESULT_CANCELED);
 					finish();
 				} else {
-					int score=(int)getIntent().getIntExtra("score",0);
+					int score=getIntent().getIntExtra("score",0);
 					th.insert(new User(user,score));
 					setResult(RESULT_OK);
 					finish();
