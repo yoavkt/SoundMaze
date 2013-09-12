@@ -1,4 +1,4 @@
-package be.lukin.android.babble.provider;
+package com.example.soundmaze.provider;
 
 import java.util.HashMap;
 
