@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
@@ -24,7 +23,6 @@ public class MazeView extends View {
 	float totalCellWidth, totalCellHeight;
 	//the finishing point of the maze
 	private Paint line, red, background;
-	private int _score;
 
 	public MazeView(Context context, AttributeSet attrs) {
 		super(context,attrs);
@@ -148,7 +146,7 @@ public class MazeView extends View {
 			//here i am sending you the score.
 				Intent myIntent = new Intent(_gameContext,
 						AddUserActivity.class);
-				myIntent.putExtra("score",_score);
+				myIntent.putExtra("score", 500);
 				_gameContext.startActivity(myIntent);
 			}
 		}

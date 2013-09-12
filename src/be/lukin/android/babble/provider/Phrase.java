@@ -1,4 +1,4 @@
-package com.example.soundmaze.provider;
+package be.lukin.android.babble.provider;
 
 import android.net.Uri;
 

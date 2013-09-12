@@ -43,6 +43,7 @@ public class InstructActivity extends Activity {
 		mTvFeedback = (TextView) findViewById(R.id.tvFeedback);
 		mButtonMicrophone = (MicButton) findViewById(R.id.buttonMicrophone);
 
+
 	}
 
 	/**
@@ -197,17 +198,19 @@ public class InstructActivity extends Activity {
 
 			@Override
 			public void onResults(Bundle results) {
-				sr.stopListening();
+				handler.removeCallbacks(stopListening);
 				ArrayList<String> matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
 				mState = State.INIT;
 				if (!matches.isEmpty()) {
 					String result = matches.iterator().next();
 
 					int dir=Utils.phraseDistances(result);
-					//TODO put the text lable logic here.
+
 					mTvFeedback.setText( "going "+dir);
 					mTvFeedback.setVisibility(View.VISIBLE);
 				}
+				//						Intent intentRecognizer = createRecognizerIntent();
+				//						sr.startListening(intentRecognizer);
 			}
 
 			@Override
