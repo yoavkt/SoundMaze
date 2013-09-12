@@ -11,7 +11,7 @@ import android.view.View;
 
 public class MazeView extends View {
 	
-	private Maze _maze;
+	public Maze _maze;
 	private Activity _gameContext;
 	//width and height of the whole maze and width of lines which
 	//make the walls
@@ -23,6 +23,7 @@ public class MazeView extends View {
 	float totalCellWidth, totalCellHeight;
 	//the finishing point of the maze
 	private Paint line, red, background;
+	private double _score=0;
 
 	public MazeView(Context context, AttributeSet attrs) {
 		super(context,attrs);
@@ -53,6 +54,7 @@ public class MazeView extends View {
 	{
 		_maze = maze;
 	}
+	
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		
 		width = (w < h)?w:h;
@@ -137,18 +139,21 @@ public class MazeView extends View {
 				moved = _maze.move(Maze.LEFT);
 				break;
 			default:
-				return false;
+				moved= false;
 		}
 		if(moved) {
-			//the ball was moved so we'll redraw the view
+			_score+=5;
 			invalidate();
 			if(_maze.winMaze()) {
 			//here i am sending you the score.
+				_score+=100;
 				Intent myIntent = new Intent(_gameContext,
 						AddUserActivity.class);
-				myIntent.putExtra("score", 500);
+				myIntent.putExtra("score", _score);
 				_gameContext.startActivity(myIntent);
 			}
+			else
+				_score-=5;
 		}
 		return true;
 	}

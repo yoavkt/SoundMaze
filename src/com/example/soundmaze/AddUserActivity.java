@@ -8,11 +8,13 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 
 public class AddUserActivity extends Activity{
+	TableHelper th;
 	@Override
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.edit);
-
+		 th=new TableHelper(this);
 		findViewById(R.id.btnOK).setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				EditText userName = (EditText)findViewById(R.id.edtNewName);
@@ -21,10 +23,9 @@ public class AddUserActivity extends Activity{
 					setResult(RESULT_CANCELED);
 					finish();
 				} else {
-					Intent resultIntent = new Intent();
-					resultIntent.putExtra("name", user);
-
-					setResult(RESULT_OK, resultIntent);
+					int score=(int)getIntent().getIntExtra("score",0);
+					th.insert(new User(user,score));
+					setResult(RESULT_OK);
 					finish();
 				}
 			}
@@ -36,5 +37,7 @@ public class AddUserActivity extends Activity{
 			}
 		});
 	}
+
+
 
 }
