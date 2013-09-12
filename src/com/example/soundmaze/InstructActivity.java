@@ -200,14 +200,17 @@ public class InstructActivity extends Activity {
 				sr.stopListening();
 				ArrayList<String> matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
 				mState = State.INIT;
+				int dir;
 				if (!matches.isEmpty()) {
 					String result = matches.iterator().next();
-
-					int dir=Utils.phraseDistances(result);
+					dir=Utils.phraseDistances(result);
 					//TODO put the text lable logic here.
-					mTvFeedback.setText( "going "+dir);
-					mTvFeedback.setVisibility(View.VISIBLE);
 				}
+				else 
+					dir=0;
+					mTvFeedback.setText( trainigDialogue.correctProgress(dir));
+					mTvFeedback.setVisibility(View.VISIBLE);
+				
 			}
 
 			@Override
@@ -217,6 +220,48 @@ public class InstructActivity extends Activity {
 		});
 		sr.startListening(intentRecognizer);
 	}
+	static class trainigDialogue {
+		private static int ups=2;
+		private static int rights=2;
+		private static int downs=2;
+		private static int lefts=2;
+		private static String SUCCESS_STRING="Very good!";
+		private static String SAY_STRING=" say ";
+
+		
+		public static String correctProgress(int code){
+			if (ups>0)
+				if (code==1)
+				{
+					ups=ups-1;
+					return "Very Good Say up one more time";
+				}
+				else return "Try to say up again!";
+			if (downs>0)
+				if (code==2)
+				{
+					downs=downs-1;
+					return "Very Good Say down again";
+				}
+				else return "Try to say down";
+			if (lefts>0)
+				if (code==3)
+				{
+					lefts=lefts-1;
+					return "Very Good Say left again";
+				}
+				else return "Try to say left";
+			if (rights>0)
+				if (code==2)
+				{
+					rights=rights-1;
+					return "Very Good Say right again";
+				}
+				else return "Try to say right";
+			return "Now you are ready!";
+		}
+	}
+	
 }
 
 
