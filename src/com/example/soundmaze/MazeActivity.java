@@ -6,18 +6,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.Menu;
-
-
 import java.util.ArrayList;
 import java.util.List;
-
-import android.app.Activity;
 import android.content.ComponentName;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ResolveInfo;
-import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.speech.RecognitionListener;
@@ -25,7 +18,6 @@ import android.speech.RecognitionService;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.view.View;
-import android.widget.TextView;
 
 import com.example.soundmaze.Constants.State;
 
@@ -36,21 +28,15 @@ import com.example.soundmaze.Constants.State;
 public class MazeActivity extends Activity {
 
 	Maze stageMaze;
-	
-
 	public static final int LISTENING_TIMEOUT = 1000;
 	private State mState = State.INIT;
 	private SharedPreferences mPrefs;
 	private MicButton mButtonMicrophone1;
 	private SpeechRecognizer mSr;
-//	private TextView mTvFeedback;
 	MazeMaster myMazeMaster;
-	//tamar
 	TableHelper th;
-
-	
-
 	MazeView myMazeView;
+	Intent soundIntent;
 
 
 
@@ -61,11 +47,9 @@ public class MazeActivity extends Activity {
 		setContentView(R.layout.activity_maze);
 		Intent in= this.getIntent();
 		Maze m1 = (Maze)in.getParcelableExtra("maze");
-		 myMazeView = (MazeView) this.findViewById(R.id.mazeView);
+		myMazeView = (MazeView) this.findViewById(R.id.mazeView);
 		myMazeView.setMaze(m1);
-
 		mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-//		mTvFeedback = (TextView) findViewById(R.id.tvFeedback);
 		mButtonMicrophone1 = (MicButton) findViewById(R.id.buttonMicrophone1);
 
 
@@ -170,7 +154,7 @@ public class MazeActivity extends Activity {
 
 
 	private void startListening(final SpeechRecognizer sr, final boolean isStorePhrase) {
-		Intent intentRecognizer = createRecognizerIntent();
+		soundIntent = createRecognizerIntent();
 
 		final Runnable stopListening = new Runnable() {
 			@Override
@@ -245,10 +229,12 @@ public class MazeActivity extends Activity {
 						move=KeyEvent.KEYCODE_DPAD_RIGHT;
 						break;
 					default:
-						//todo err
+						move=999;
 						break;
 					}
 					myMazeView.movementUpdater(move);
+					
+					sr.startListening(soundIntent);
 				}
 			}
 
@@ -257,7 +243,7 @@ public class MazeActivity extends Activity {
 				mButtonMicrophone1.setVolumeLevel(rmsdB);
 			}
 		});
-		sr.startListening(intentRecognizer);
+		sr.startListening(soundIntent);
 	}
 }
 

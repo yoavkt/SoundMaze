@@ -8,8 +8,8 @@
 		"startRow":0,
 		"rowNum":10,
 		"colNum":10,
-		"endRow":9,
-		"endCol":9,
+		"endRow":1,
+		"endCol":4,
 		"Vertical": [   
 					[false,false,false,false,false,false,false,false,false,false],
 					[false,false,false,false,false,false,false,false,true,false],
@@ -23,7 +23,7 @@
 					[false,false,false,false,false,false,false,false,true,false]
 				],
 		"Horizontal": [   
-					[true,true,true,true,false,true,true,true,true,false],
+					[true,true,false,true,true,true,true,true,true,false],
 					[false,false,false,false,false,false,false,false,false,false],
 					[false,false,false,false,false,false,false,false,false,false],
 					[false,false,false,false,false,false,false,false,false,false],

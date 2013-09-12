@@ -14,15 +14,11 @@ import android.widget.Button;
 public class MainActivity extends Activity {
 	
 	MazeMaster myMazeMaster;
-	TableHelper th;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_main);
-		
-
-		th=new TableHelper(this);
 		try {
 			 myMazeMaster=new MazeMaster(this.getApplicationContext());
 			
@@ -73,14 +69,6 @@ public class MainActivity extends Activity {
 			}
 		});
 
-	}
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (requestCode == 1337 && resultCode == RESULT_OK) {
-			String userName = data.getStringExtra("name");
-			th.insert(new User(userName,222));
-			
-		}
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
