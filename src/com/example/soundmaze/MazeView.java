@@ -23,6 +23,7 @@ public class MazeView extends View {
 	float totalCellWidth, totalCellHeight;
 	//the finishing point of the maze
 	private Paint line, red, background;
+	private double _score;
 
 	public MazeView(Context context, AttributeSet attrs) {
 		super(context,attrs);
@@ -146,7 +147,7 @@ public class MazeView extends View {
 			//here i am sending you the score.
 				Intent myIntent = new Intent(_gameContext,
 						AddUserActivity.class);
-				myIntent.putExtra("score", 500);
+				myIntent.putExtra("score", _score);
 				_gameContext.startActivity(myIntent);
 			}
 		}

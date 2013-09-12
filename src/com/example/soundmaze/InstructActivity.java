@@ -43,7 +43,6 @@ public class InstructActivity extends Activity {
 		mTvFeedback = (TextView) findViewById(R.id.tvFeedback);
 		mButtonMicrophone = (MicButton) findViewById(R.id.buttonMicrophone);
 
-
 	}
 
 	/**
