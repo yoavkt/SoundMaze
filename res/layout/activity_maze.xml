@@ -12,17 +12,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MazeActivity" >
 
-    <Button
-        android:id="@+id/button1"
+    <com.example.soundmaze.MicButton
+        android:id="@+id/buttonMicrophone1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
-                
-        <com.example.soundmaze.MazeView
-            android:id="@+id/mazeView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        android:background="@drawable/button_mic"
+        android:contentDescription="@string/buttonMicrophoneContentDescription"
+        android:src="@drawable/ic_btn_speak_now" />
 
-
+    <com.example.soundmaze.MazeView
+        android:id="@+id/mazeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
