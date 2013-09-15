@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.TextView;
 
 public class MazeView extends View {
 	
@@ -24,6 +25,7 @@ public class MazeView extends View {
 	//the finishing point of the maze
 	private Paint line, red, background;
 	private int _score=0;
+	TextView textScore;
 
 	public MazeView(Context context, AttributeSet attrs) {
 		super(context,attrs);
@@ -31,6 +33,8 @@ public class MazeView extends View {
 		setFocusable(true);
 		this.setFocusableInTouchMode(true);
 		setDisplayItmes();
+		textScore=(TextView)findViewById(R.id.textScore);
+		
 		
 	}
 	
@@ -124,6 +128,8 @@ public class MazeView extends View {
 	
 	public boolean movementUpdater(int moveCode)
 	{
+		//TODO Score
+//		textScore.setText(_score);
 		boolean moved = false;
 		switch(moveCode) {
 			case KeyEvent.KEYCODE_DPAD_UP:
@@ -143,10 +149,14 @@ public class MazeView extends View {
 		}
 		if(moved) {
 			_score=_score+5;
+			//TODO Score
+//			textScore.setText(_score);
 			invalidate();
 			if(_maze.winMaze()) {
 			//here i am sending you the score.
 				_score=_score+100;
+				//TODO Score
+//				textScore.setText(_score);
 				Intent myIntent = new Intent(_gameContext,
 						AddUserActivity.class);
 				myIntent.putExtra("score", _score);
@@ -154,6 +164,7 @@ public class MazeView extends View {
 			}
 		}else
 			_score=_score-5;
+		textScore.setText(_score);
 		return true;
 	}
 	

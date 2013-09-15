@@ -25,6 +25,7 @@ import android.speech.RecognitionService;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.soundmaze.Constants.State;
@@ -36,51 +37,46 @@ import com.example.soundmaze.Constants.State;
 public class MazeActivity extends Activity {
 
 	Maze stageMaze;
-	
+
 
 	public static final int LISTENING_TIMEOUT = 1000;
 	private State mState = State.INIT;
 	private SharedPreferences mPrefs;
 	private MicButton mButtonMicrophone1;
 	private SpeechRecognizer mSr;
-//	private TextView mTvFeedback;
+	//	private TextView mTvFeedback;
 	MazeMaster myMazeMaster;
 	//tamar
 	TableHelper th;
 
-	
+
 
 	MazeView myMazeView;
-
+	TextView textMove;
 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_maze);
 		Intent in= this.getIntent();
 		Maze m1 = (Maze)in.getParcelableExtra("maze");
-		 myMazeView = (MazeView) this.findViewById(R.id.mazeView);
+		myMazeView = (MazeView) this.findViewById(R.id.mazeView);
 		myMazeView.setMaze(m1);
-
+		textMove = (TextView) findViewById(R.id.textMove);
 		mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-//		mTvFeedback = (TextView) findViewById(R.id.tvFeedback);
 		mButtonMicrophone1 = (MicButton) findViewById(R.id.buttonMicrophone1);
-
-
-	}
-
-	/**
-	 * We initialize the speech recognizer here, assuming that the configuration
-	 * changed after onStop. That is why onStop destroys the recognizer.
-	 */
-	@Override
-	public void onStart() {
-		super.onStart();
-
+		
+		Button back=(Button)findViewById(R.id.buttonBack);
+		back.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				finish();
+			}
+		});
+		
+		
 		ComponentName serviceComponent = getServiceComponent();
-
 		if (serviceComponent != null) {
 			mSr = SpeechRecognizer.createSpeechRecognizer(this, serviceComponent);
 			if (mSr != null) {
@@ -89,6 +85,17 @@ public class MazeActivity extends Activity {
 		}
 
 
+	}
+
+
+
+	/**
+	 * We initialize the speech recognizer here, assuming that the configuration
+	 * changed after onStop. That is why onStop destroys the recognizer.
+	 */
+	@Override
+	public void onStart() {
+		super.onStart();
 	}
 
 	@Override
@@ -101,7 +108,6 @@ public class MazeActivity extends Activity {
 		}
 	}
 
-
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -109,6 +115,11 @@ public class MazeActivity extends Activity {
 			mSr.destroy();
 			mSr = null;
 		}
+	}
+	@Override
+	protected void onResume() {
+		super.onResume();
+
 	}
 
 	private Intent createRecognizerIntent() {
@@ -121,6 +132,11 @@ public class MazeActivity extends Activity {
 		return intent;
 	}
 
+	@Override
+	 public void onBackPressed() {
+		 finish();
+		 return;
+		 }
 
 	private void setUpRecognizerGui(final SpeechRecognizer sr) {
 		mButtonMicrophone1.setOnClickListener(new View.OnClickListener() {
@@ -170,7 +186,7 @@ public class MazeActivity extends Activity {
 
 
 	private void startListening(final SpeechRecognizer sr, final boolean isStorePhrase) {
-		Intent intentRecognizer = createRecognizerIntent();
+//		Intent intentRecognizer = createRecognizerIntent();
 
 		final Runnable stopListening = new Runnable() {
 			@Override
@@ -228,28 +244,35 @@ public class MazeActivity extends Activity {
 				mState = State.INIT;
 				if (!matches.isEmpty()) {
 					String result = matches.iterator().next();
-
+					String moveResult="Ball heard:";
 					int dir=Utils.phraseDistances(result);
 					int move=0;
 					switch (dir) {
 					case 1:
+						moveResult+="up";
 						move=KeyEvent.KEYCODE_DPAD_UP;
 						break;
 					case 2:
+						moveResult+="down";
 						move=KeyEvent.KEYCODE_DPAD_DOWN;
 						break;
 					case 3:
+						moveResult+="left";
 						move=KeyEvent.KEYCODE_DPAD_LEFT;
 						break;
 					case 4:
+						moveResult+="right";
 						move=KeyEvent.KEYCODE_DPAD_RIGHT;
 						break;
 					default:
-						//todo err
+						moveResult+="illegal move";
+						move=999;
 						break;
 					}
+					textMove.setText(moveResult);
 					myMazeView.movementUpdater(move);
 				}
+				sr.startListening(createRecognizerIntent());
 			}
 
 			@Override
@@ -257,7 +280,7 @@ public class MazeActivity extends Activity {
 				mButtonMicrophone1.setVolumeLevel(rmsdB);
 			}
 		});
-		sr.startListening(intentRecognizer);
+		sr.startListening(createRecognizerIntent());
 	}
 }
 
