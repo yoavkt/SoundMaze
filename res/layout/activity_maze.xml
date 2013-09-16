@@ -55,6 +55,7 @@
             android:layout_marginLeft="10dp"
             android:padding="20dp"
             android:text="Back" />
+
     </LinearLayout>
 
     <com.example.soundmaze.MazeView

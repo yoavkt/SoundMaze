@@ -25,6 +25,8 @@ public class MazeView extends View {
 	//the finishing point of the maze
 	private Paint line, red, background;
 	private int _score=0;
+	private int _scoreFactor=1;
+	private Canvas myCanvas;
 	TextView textScore;
 
 	public MazeView(Context context, AttributeSet attrs) {
@@ -43,6 +45,19 @@ public class MazeView extends View {
 		_gameContext = (Activity)context;
 		_maze = maze;
 		setDisplayItmes();
+		
+	}
+	
+	public int get_score() {
+		return _score;
+	}
+	public void startMazeHeroMode()
+	{
+		_scoreFactor=3;
+		line = new Paint();
+		line.setColor(getResources().getColor(R.color.board));
+		
+		 invalidate();
 		
 	}
 	private void setDisplayItmes()
@@ -74,7 +89,7 @@ public class MazeView extends View {
 		
 	}
 	protected void onDraw(Canvas canvas) {
-		
+		myCanvas=canvas;
 		if (_maze!=null){
 		canvas.drawRect(0, 0, width, height, background);
 		drawWalls(canvas);
@@ -148,13 +163,14 @@ public class MazeView extends View {
 				moved= false;
 		}
 		if(moved) {
-			_score=_score+5;
+			_score=(_score+5)*_scoreFactor;
 			//TODO Score
+			
 //			textScore.setText(_score);
 			invalidate();
 			if(_maze.winMaze()) {
 			//here i am sending you the score.
-				_score=_score+100;
+				_score=_score+100*_scoreFactor;
 				//TODO Score
 //				textScore.setText(_score);
 				Intent myIntent = new Intent(_gameContext,

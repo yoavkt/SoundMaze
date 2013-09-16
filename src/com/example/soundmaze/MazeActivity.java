@@ -53,6 +53,7 @@ public class MazeActivity extends Activity {
 
 	MazeView myMazeView;
 	TextView textMove;
+	TextView textScore;
 
 
 	@Override
@@ -64,7 +65,9 @@ public class MazeActivity extends Activity {
 		Maze m1 = (Maze)in.getParcelableExtra("maze");
 		myMazeView = (MazeView) this.findViewById(R.id.mazeView);
 		myMazeView.setMaze(m1);
+		myMazeView.startMazeHeroMode();
 		textMove = (TextView) findViewById(R.id.textMove);
+		textScore = (TextView) findViewById(R.id.textScore);
 		mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 		mButtonMicrophone1 = (MicButton) findViewById(R.id.buttonMicrophone1);
 		
@@ -271,6 +274,9 @@ public class MazeActivity extends Activity {
 					}
 					textMove.setText(moveResult);
 					myMazeView.movementUpdater(move);
+					//TODO here is set the score
+					textScore.setText(myMazeView.get_score());
+					
 				}
 				sr.startListening(createRecognizerIntent());
 			}
