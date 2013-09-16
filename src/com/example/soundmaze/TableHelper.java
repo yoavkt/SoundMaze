@@ -59,6 +59,7 @@ public class TableHelper {
 		final User t=user;
 		ParseQuery<ParseObject> query = new ParseQuery("users");
 		query.whereEqualTo("name", user.getName());
+		query.addAscendingOrder("score");
 		update=true;
 		query.findInBackground(new FindCallback() {
 
@@ -73,8 +74,9 @@ public class TableHelper {
 						update=false;
 						return ;
 					}
+			
 					for(Object obj : objects){
-						
+					
 						ParseObject obj1=(ParseObject) obj;
 						obj1.put("score",t.getScore());
 						obj1.saveInBackground();
@@ -141,13 +143,14 @@ public class TableHelper {
 	public List<User> all() { 
 		ParseQuery query = new ParseQuery("users");
 		List<User> list = new ArrayList<User>();
-
+		query.addDescendingOrder("score");
 		try {
-			for (Object i :query.find()){
-				ParseObject j=(ParseObject)i;
-				list.add(new User(j.getString("name"),j.getInt("score")));
-
+			List res=query.find();
+			for (int j = 0; j < 5; j++) {
+				ParseObject i=(ParseObject)res.get(j);
+				list.add(new User(i.getString("name"),i.getInt("score")));
 			}
+			
 
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block

@@ -84,16 +84,16 @@ public class MazeView extends View {
 	}
 	public void drawPlayer(Canvas canvas)
 	{
-		canvas.drawCircle((_maze.get_currentPoint().x * totalCellWidth)+(cellWidth/2),   //x of center
-				  (_maze.get_currentPoint().y * totalCellHeight)+(cellWidth/2),  //y of center
+		canvas.drawCircle((_maze.get_currentPoint().y * totalCellWidth)+(cellWidth/2),   //x of center
+				  (_maze.get_currentPoint().x * totalCellHeight)+(cellWidth/2),  //y of center
 				  (cellWidth*0.45f),                           //radius
 				  red);
 	}
 	public void drawEndPoint(Canvas canvas)
 	{
 	    canvas.drawText("F",
-                (_maze.get_pointEnd().x * totalCellWidth)+(cellWidth*0.25f),
-                (_maze.get_pointEnd().y * totalCellHeight)+(cellHeight*0.75f),
+                (_maze.get_pointEnd().y * totalCellWidth)+(cellWidth*0.25f),
+                (_maze.get_pointEnd().x * totalCellHeight)+(cellHeight*0.75f),
                 red);
 	}
 	public void drawWalls(Canvas canvas)

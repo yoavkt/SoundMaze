@@ -204,7 +204,6 @@ public class InstructActivity extends Activity {
 				if (!matches.isEmpty()) {
 					String result = matches.iterator().next();
 					dir=Utils.phraseDistances(result);
-					//TODO put the text lable logic here.
 				}
 				else 
 					dir=0;
@@ -227,35 +226,46 @@ public class InstructActivity extends Activity {
 		private static int lefts=2;
 		private static String SUCCESS_STRING="Very good!";
 		private static String SAY_STRING=" say ";
-
 		
+		private static String nextMessage(String dir,int val)
+		{
+			switch(val){
+			case 1:
+				return "Vary good ! say on more time";
+			case 0:
+				return "O.K now say "+dir;
+			default:
+				return "Well resart the training or go & play!";
+			}
+		}
 		public static String correctProgress(int code){
 			if (ups>0)
 				if (code==1)
 				{
 					ups=ups-1;
-					return "Very Good Say up one more time";
+					return nextMessage("down",ups);
+					
 				}
 				else return "Try to say up again!";
 			if (downs>0)
 				if (code==2)
 				{
 					downs=downs-1;
-					return "Very Good Say down again";
+					return nextMessage("left",downs);
 				}
 				else return "Try to say down";
 			if (lefts>0)
 				if (code==3)
 				{
 					lefts=lefts-1;
-					return "Very Good Say left again";
+					return nextMessage("right",lefts);
 				}
 				else return "Try to say left";
 			if (rights>0)
 				if (code==2)
 				{
 					rights=rights-1;
-					return "Very Good Say right again";
+					return nextMessage("down",rights);
 				}
 				else return "Try to say right";
 			return "Now you are ready!";

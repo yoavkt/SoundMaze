@@ -8,15 +8,18 @@
         android:id="@+id/txtName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_weight="0.65"
+        android:gravity="left"
         android:text="ffffff"
-         android:layout_marginLeft="30dp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/txtScore"
-        android:layout_width="wrap_content"
+        android:layout_width="89dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
+        android:gravity="right"
         android:text="hhhhhhhhh"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 

@@ -12,39 +12,36 @@
 
     <Button
         android:id="@+id/btnMainMaze1"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="40dp"
         android:text="@string/maze_1_name" />
 
     <Button
         android:id="@+id/btnMainMaze2"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:text="@string/maze_2_name" />
   <Button
         android:id="@+id/btnMainTopScores"
-		android:layout_width="300dp"
+		android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:text="@string/top_scores" />
     <Button
         android:id="@+id/btnMainInst"
-		android:layout_width="300dp"
+		android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:text="@string/inst_dsp" />
-   
-
-        
-
-  
-
-
 
 </LinearLayout>
