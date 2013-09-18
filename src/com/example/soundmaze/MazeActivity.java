@@ -79,7 +79,12 @@ public class MazeActivity extends Activity {
 			}
 		});
 		
-		
+		Button hero=(Button)findViewById(R.id.buttonHero);
+		hero.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				myMazeView.startMazeHeroMode();
+			}
+		});
 		ComponentName serviceComponent = getServiceComponent();
 		if (serviceComponent != null) {
 			mSr = SpeechRecognizer.createSpeechRecognizer(this, serviceComponent);
