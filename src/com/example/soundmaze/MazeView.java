@@ -50,6 +50,8 @@ public class MazeView extends View {
 	}
 	public void restartMaze(){
 		_maze.resetLocation();
+		_life=3;
+		_score=0;
 		unHeroMode();
 	}
 	public int getLife() {

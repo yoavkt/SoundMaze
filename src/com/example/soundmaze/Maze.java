@@ -73,6 +73,7 @@ public class Maze implements Parcelable  {
 		_mazeName=in.readString();
 		_mazeColNum=in.readInt();
 		_mazeRowNum=in.readInt();
+		_startPoint=new Point(_currentPoint);
 		_verticalWall=new boolean [_mazeRowNum][_mazeColNum];
 		for (int r = 0; r < _mazeRowNum; r++) 
 				in.readBooleanArray(_verticalWall[r]);
