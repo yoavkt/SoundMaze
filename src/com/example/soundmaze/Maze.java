@@ -130,25 +130,25 @@ public class Maze implements Parcelable  {
 	}
 	public boolean move(int direction) {
 		boolean moved = false;
-		if(direction == UP) {
+		if(direction == LEFT) {
 			if(_currentPoint.y != 0 && !_horizontalWall[_currentPoint.y-1][_currentPoint.x]) {
 				_currentPoint.y--;
 				moved = true;
 			}
 		}
-		if(direction == DOWN) {
+		if(direction == RIGHT) {
 			if(_currentPoint.y != _mazeRowNum-1 && !_horizontalWall[_currentPoint.y][_currentPoint.x]) {
 				_currentPoint.y++;
 				moved = true;
 			}
 		}
-		if(direction == RIGHT) {
+		if(direction == DOWN) {
 			if(_currentPoint.x != _mazeRowNum-1 && !_verticalWall[_currentPoint.y][_currentPoint.x]) {
 				_currentPoint.x++;
 				moved = true;
 			}
 		}
-		if(direction == LEFT) {
+		if(direction == UP) {
 			if(_currentPoint.x != 0 && !_verticalWall[_currentPoint.y][_currentPoint.x-1]) {
 				_currentPoint.x--;
 				moved = true;
