@@ -275,7 +275,7 @@ public class MazeActivity extends Activity {
 					textMove.setText(moveResult);
 					myMazeView.movementUpdater(move);
 					//TODO here is set the score
-					textScore.setText(myMazeView.get_score());
+//					textScore.setText(myMazeView.get_score());
 					
 				}
 				sr.startListening(createRecognizerIntent());
