@@ -27,6 +27,7 @@ import android.speech.SpeechRecognizer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.soundmaze.Constants.State;
 
@@ -274,8 +275,24 @@ public class MazeActivity extends Activity {
 						break;
 					}
 					textMove.setText(moveResult);
-					int s=myMazeView.get_score();
-					textScore.setText("Your Score: " +String.valueOf(s));
+					myMazeView.movementUpdater(move);
+					if (myMazeView.getLife()==0)
+					{
+						myMazeView.restartMaze();
+						textScore.setText("Your Score: 0");
+						Toast.makeText(getApplicationContext(), "Too bad Try Agaian!", Toast.LENGTH_LONG).show();
+					}
+					else{
+						
+					
+						textScore.setText("Your Score: " +String.valueOf(myMazeView.get_score()));
+					if (myMazeView.getWin()){
+						Intent myIntent = new Intent(MazeActivity.this,
+								AddUserActivity.class);
+						myIntent.putExtra("score", myMazeView.get_score());
+						MazeActivity.this.startActivity(myIntent);
+					}}
+						
 					
 				}
 				sr.startListening(createRecognizerIntent());

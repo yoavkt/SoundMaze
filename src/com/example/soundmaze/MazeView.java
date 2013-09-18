@@ -26,6 +26,7 @@ public class MazeView extends View {
 	private Paint line, red, background;
 	private int _score=0;
 	private int _scoreFactor=1;
+	private int _life=3;
 	private Canvas myCanvas;
 //	TextView textScore;
 
@@ -51,10 +52,10 @@ public class MazeView extends View {
 		
 	}
 	public int getLife() {
-		return 0;
+		return _life;
 	}
 	public boolean getWin(){
-		return false;
+		return _maze.winMaze();
 	}
 	public int get_score() {
 		return _score;
@@ -107,16 +108,16 @@ public class MazeView extends View {
 	}
 	public void drawPlayer(Canvas canvas)
 	{
-		canvas.drawCircle((_maze.get_currentPoint().y * totalCellWidth)+(cellWidth/2),   //x of center
-				  (_maze.get_currentPoint().x * totalCellHeight)+(cellWidth/2),  //y of center
+		canvas.drawCircle((_maze.get_currentPoint().x * totalCellWidth)+(cellWidth/2),   //x of center
+				  (_maze.get_currentPoint().y * totalCellHeight)+(cellWidth/2),  //y of center
 				  (cellWidth*0.45f),                           //radius
 				  red);
 	}
 	public void drawEndPoint(Canvas canvas)
 	{
 	    canvas.drawText("F",
-                (_maze.get_pointEnd().y * totalCellWidth)+(cellWidth*0.25f),
-                (_maze.get_pointEnd().x * totalCellHeight)+(cellHeight*0.75f),
+                (_maze.get_pointEnd().x * totalCellWidth)+(cellWidth*0.25f),
+                (_maze.get_pointEnd().y * totalCellHeight)+(cellHeight*0.75f),
                 red);
 	}
 	public void drawWalls(Canvas canvas)
@@ -173,16 +174,11 @@ public class MazeView extends View {
 			invalidate();
 			if(_maze.winMaze()) {
 				_score=_score+100*_scoreFactor;
-				//TODO take from here
-				
-				//Intent myIntent = new Intent(_gameContext,
-				//		AddUserActivity.class);
-				//myIntent.putExtra("score", _score);
-				//_gameContext.startActivity(myIntent);
-				//TODO up to here
 			}
-		}else
+		}else{
 			_score=_score-5;
+			_life=_life-1;
+		}
 		return true;
 	}
 	

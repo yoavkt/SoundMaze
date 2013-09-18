@@ -83,8 +83,8 @@ public class Maze implements Parcelable  {
 		
 		_verticalWall=new boolean[_mazeRowNum=jsonObject.getInt("rowNum")][_mazeColNum=jsonObject.getInt("colNum")];
 		_horizontalWall=new boolean[_mazeRowNum][_mazeColNum];
-		_currentPoint=new Point(jsonObject.getInt("startRow"),jsonObject.getInt("startCol"));
-		_pointEnd=new Point(jsonObject.getInt("endRow"),jsonObject.getInt("endCol"));
+		_currentPoint=new Point(jsonObject.getInt("startCol"),jsonObject.getInt("startRow"));
+		_pointEnd=new Point(jsonObject.getInt("endCol"),jsonObject.getInt("endRow"));
 		JSONArray rowsArr=jsonObject.getJSONArray("Vertical");
 		for (int i = 0; i < rowsArr.length(); i++) {
 				for (int j = 0; j < jsonObject.getInt("colNum"); j++)
@@ -130,25 +130,25 @@ public class Maze implements Parcelable  {
 	}
 	public boolean move(int direction) {
 		boolean moved = false;
-		if(direction == LEFT) {
+		if(direction == UP) {
 			if(_currentPoint.y != 0 && !_horizontalWall[_currentPoint.y-1][_currentPoint.x]) {
 				_currentPoint.y--;
 				moved = true;
 			}
 		}
-		if(direction == RIGHT) {
+		if(direction == DOWN) {
 			if(_currentPoint.y != _mazeRowNum-1 && !_horizontalWall[_currentPoint.y][_currentPoint.x]) {
 				_currentPoint.y++;
 				moved = true;
 			}
 		}
-		if(direction == DOWN) {
+		if(direction == RIGHT) {
 			if(_currentPoint.x != _mazeRowNum-1 && !_verticalWall[_currentPoint.y][_currentPoint.x]) {
 				_currentPoint.x++;
 				moved = true;
 			}
 		}
-		if(direction == UP) {
+		if(direction == LEFT) {
 			if(_currentPoint.x != 0 && !_verticalWall[_currentPoint.y][_currentPoint.x-1]) {
 				_currentPoint.x--;
 				moved = true;
