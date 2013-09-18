@@ -21,6 +21,7 @@ public class Maze implements Parcelable  {
 	boolean[][] _horizontalWall;
 	Point _currentPoint;
 	Point _pointEnd;
+	Point _startPoint;
 	int _mazeColNum;
 	int _mazeRowNum;
 	
@@ -84,6 +85,7 @@ public class Maze implements Parcelable  {
 		_verticalWall=new boolean[_mazeRowNum=jsonObject.getInt("rowNum")][_mazeColNum=jsonObject.getInt("colNum")];
 		_horizontalWall=new boolean[_mazeRowNum][_mazeColNum];
 		_currentPoint=new Point(jsonObject.getInt("startCol"),jsonObject.getInt("startRow"));
+		_startPoint=new Point(_currentPoint);
 		_pointEnd=new Point(jsonObject.getInt("endCol"),jsonObject.getInt("endRow"));
 		JSONArray rowsArr=jsonObject.getJSONArray("Vertical");
 		for (int i = 0; i < rowsArr.length(); i++) {
@@ -96,6 +98,9 @@ public class Maze implements Parcelable  {
 					_horizontalWall[i][j]=colsArr.getJSONArray(i).getBoolean(j);
 		}
 		_mazeName=jsonObject.getString("Name");
+	}
+	public void resetLocation(){
+		_currentPoint=_startPoint;
 	}
 	public String get_mazeName() {
 		return _mazeName;

@@ -49,7 +49,8 @@ public class MazeView extends View {
 		
 	}
 	public void restartMaze(){
-		
+		_maze.resetLocation();
+		unHeroMode();
 	}
 	public int getLife() {
 		return _life;
@@ -63,11 +64,16 @@ public class MazeView extends View {
 	public void startMazeHeroMode()
 	{
 		_scoreFactor=3;
-		line = new Paint();
-		line.setColor(getResources().getColor(R.color.board));
-		
+		background = new Paint();
+		background.setColor(getResources().getColor(R.color.wall));
 		 invalidate();
-		
+	}
+	public void unHeroMode()
+	{
+		_scoreFactor=1;
+		background = new Paint();
+		background.setColor(getResources().getColor(R.color.board));
+		 invalidate();
 	}
 	private void setDisplayItmes()
 	{

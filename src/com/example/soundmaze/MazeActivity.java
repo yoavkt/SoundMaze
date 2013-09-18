@@ -280,7 +280,7 @@ public class MazeActivity extends Activity {
 					{
 						myMazeView.restartMaze();
 						textScore.setText("Your Score: 0");
-						Toast.makeText(getApplicationContext(), "Too bad Try Agaian!", Toast.LENGTH_LONG).show();
+						Toast.makeText(getApplicationContext(), "Too bad Try Again!", Toast.LENGTH_LONG).show();
 					}
 					else{
 						
