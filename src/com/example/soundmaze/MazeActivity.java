@@ -65,7 +65,7 @@ public class MazeActivity extends Activity {
 		Maze m1 = (Maze)in.getParcelableExtra("maze");
 		myMazeView = (MazeView) this.findViewById(R.id.mazeView);
 		myMazeView.setMaze(m1);
-		myMazeView.startMazeHeroMode();
+		//myMazeView.startMazeHeroMode();
 		textMove = (TextView) findViewById(R.id.textMove);
 		textScore = (TextView) findViewById(R.id.textScore);
 		mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -144,6 +144,7 @@ public class MazeActivity extends Activity {
 	private void setUpRecognizerGui(final SpeechRecognizer sr) {
 		mButtonMicrophone1.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
+				
 				if (mState == State.INIT || mState == State.ERROR) {
 					listenSentence(sr,  true);
 				} else if (mState == State.LISTENING) {
@@ -273,9 +274,8 @@ public class MazeActivity extends Activity {
 						break;
 					}
 					textMove.setText(moveResult);
-					myMazeView.movementUpdater(move);
-					//TODO here is set the score
-//					textScore.setText(myMazeView.get_score());
+					int s=myMazeView.get_score();
+					textScore.setText("Your Score: " +String.valueOf(s));
 					
 				}
 				sr.startListening(createRecognizerIntent());

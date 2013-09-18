@@ -47,6 +47,9 @@ public class MazeView extends View {
 		setDisplayItmes();
 		
 	}
+	public int getLife() {
+		return 0;
+	}
 	
 	public int get_score() {
 		return _score;
