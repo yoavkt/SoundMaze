@@ -50,7 +50,9 @@ public class MazeView extends View {
 	public int getLife() {
 		return 0;
 	}
-	
+	public boolean getWin(){
+		return false;
+	}
 	public int get_score() {
 		return _score;
 	}
@@ -168,10 +170,13 @@ public class MazeView extends View {
 			invalidate();
 			if(_maze.winMaze()) {
 				_score=_score+100*_scoreFactor;
-				Intent myIntent = new Intent(_gameContext,
-						AddUserActivity.class);
-				myIntent.putExtra("score", _score);
-				_gameContext.startActivity(myIntent);
+				//TODO take from here
+				
+				//Intent myIntent = new Intent(_gameContext,
+				//		AddUserActivity.class);
+				//myIntent.putExtra("score", _score);
+				//_gameContext.startActivity(myIntent);
+				//TODO up to here
 			}
 		}else
 			_score=_score-5;
