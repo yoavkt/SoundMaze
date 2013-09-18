@@ -24,6 +24,7 @@ public class Maze implements Parcelable  {
 	Point _startPoint;
 	int _mazeColNum;
 	int _mazeRowNum;
+	double _difficulty;
 	
 
 	public void set_currentPoint(Point _currentPoint) {
@@ -66,6 +67,9 @@ public class Maze implements Parcelable  {
 	public Point get_pointEnd() {
 		return _pointEnd;
 	}
+	public double get_difficulty() {
+		return _difficulty;
+	}
 	
 	public Maze(Parcel in){
 		_currentPoint=new Point(in.readInt(),in.readInt());
@@ -80,6 +84,7 @@ public class Maze implements Parcelable  {
 		_horizontalWall=new boolean [_mazeRowNum][_mazeColNum];
 		for (int r = 0; r < _mazeRowNum; r++) 
 			in.readBooleanArray(_horizontalWall[r]);
+		_difficulty=in.readDouble();
 	}
 	public Maze(JSONObject jsonObject) throws JSONException {
 		
@@ -99,6 +104,7 @@ public class Maze implements Parcelable  {
 					_horizontalWall[i][j]=colsArr.getJSONArray(i).getBoolean(j);
 		}
 		_mazeName=jsonObject.getString("Name");
+		_difficulty=jsonObject.getDouble("difficulty");
 	}
 	public void resetLocation(){
 		_currentPoint=_startPoint;
@@ -188,7 +194,8 @@ public class Maze implements Parcelable  {
 		for (int i = 0; i < _verticalWall.length; i++) 
 				out.writeBooleanArray(_verticalWall[i]);		
 		for (int i = 0; i < _horizontalWall.length; i++) 
-			out.writeBooleanArray(_horizontalWall[i]);		
+			out.writeBooleanArray(_horizontalWall[i]);
+		out.writeDouble(_difficulty);
 	}
 	public static final Parcelable.Creator<Maze> CREATOR = new Parcelable.Creator<Maze>() {
 	     public Maze createFromParcel(Parcel in) {

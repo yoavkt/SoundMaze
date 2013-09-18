@@ -45,6 +45,7 @@ public class MazeView extends View {
 		super(context);
 		_gameContext = (Activity)context;
 		_maze = maze;
+		_scoreFactor=(int) (_scoreFactor*maze.get_difficulty());
 		setDisplayItmes();
 		
 	}
@@ -65,14 +66,14 @@ public class MazeView extends View {
 	}
 	public void startMazeHeroMode()
 	{
-		_scoreFactor=3;
+		_scoreFactor=(int) (3*_maze.get_difficulty());
 		background = new Paint();
 		background.setColor(getResources().getColor(R.color.wall));
 		 invalidate();
 	}
 	public void unHeroMode()
 	{
-		_scoreFactor=1;
+		_scoreFactor=(int) (1*_maze.get_difficulty());
 		background = new Paint();
 		background.setColor(getResources().getColor(R.color.board));
 		 invalidate();
