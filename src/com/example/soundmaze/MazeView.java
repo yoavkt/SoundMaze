@@ -47,6 +47,9 @@ public class MazeView extends View {
 		setDisplayItmes();
 		
 	}
+	public void restartMaze(){
+		
+	}
 	public int getLife() {
 		return 0;
 	}
