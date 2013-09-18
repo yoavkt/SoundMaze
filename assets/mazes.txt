@@ -4,7 +4,7 @@
 "Maze":[
 	{"Name":"Maze 1",
 		"ImageName":"index.jpg",
-		"difficulty":2,
+		"difficulty":0,
 		"startCol":0,
 		"startRow":0,
 		"rowNum":10,
@@ -39,7 +39,7 @@
 	,
 	{"Name":"Maze 2",
 		"ImageName":"index.jpg",
-		"difficulty":2.2,
+		"difficulty":0,
 		"startCol":4,
 		"startRow":4,
 		"endRow":0,
@@ -70,6 +70,160 @@
 					[false,false,true,false,true,false,true,true,true,true],
 					[false,false,false,false,false,false,false,false,false,false]
 				]
-	}]
+	},
+	{"Name":"Maze 3",
+		"ImageName":"index.jpg",
+		"difficulty":0.5,
+		"startCol":0,
+		"startRow":0,
+		"endRow":3,
+		"endCol":3,
+		"rowNum":4,
+		"colNum":4,
+		"Vertical": [   
+					[false,false,false,false],
+					[false,false,true,false],
+					[false,false,true,false],
+					[false,false,true,false]
+				],
+		"Horizontal": [   
+					[true,true,true,false],
+					[false,false,false,false],
+					[false,false,false,false],
+					[false,false,false,false]
+				]
+	},
+	{"Name":"Maze 4",
+		"ImageName":"index.jpg",
+		"difficulty":0.5,
+		"startCol":0,
+		"startRow":0,
+		"endRow":5,
+		"endCol":5,
+		"rowNum":6,
+		"colNum":6,
+		"Vertical": [   
+					[true,false,false,false,false,false],
+					[true,false,false,false,false,false],
+					[false,false,true,false,false,false],
+					[false,true,true,false,false,false],
+					[false,true,true,true,true,false],
+					[false,true,false,false,true,false]
+				],
+		"Horizontal": [   
+					[false,false,false,false,false,false],
+					[false,true,true,false,false,false],
+					[true,true,false,true,true,true],
+					[false,false,false,false,false,false],
+					[false,false,false,false,false,false],
+					[false,false,false,false,false,false]
+				]
+	},
+	{"Name":"Maze 5",
+		"ImageName":"index.jpg",
+		"difficulty":0.5,
+		"startCol":0,
+		"startRow":0,
+		"endRow":6,
+		"endCol":6,
+		"rowNum":7,
+		"colNum":7,
+		"Vertical": [   
+					[false,true,false,false,false,false,false],
+					[true,false,true,false,false,false,false],
+					[false,true,false,true,false,false,false],
+					[false,false,true,false,true,false,false],
+					[false,false,false,true,false,true,false],
+					[false,false,false,false,true,false,true],
+					[false,false,false,false,false,true,false]
+				],
+		"Horizontal": [   
+					[true,false,true,false,false,false,false],
+					[false,true,false,true,false,false,false],
+					[false,false,true,false,true,false,false],
+					[false,false,false,true,false,true,false],
+					[false,false,false,false,true,false,true],
+					[false,false,false,false,false,true,false],
+					[false,false,false,false,false,false,true]
+				]
+	},
+	{"Name":"Maze 6",
+		"ImageName":"index.jpg",
+		"difficulty":0.5,
+		"startCol":0,
+		"startRow":0,
+		"endRow":1,
+		"endCol":0,
+		"rowNum":7,
+		"colNum":7,
+		"Vertical": [   
+					[false,true,false,false,false,false,false],
+					[true,false,true,false,false,false,false],
+					[false,true,false,true,false,false,false],
+					[true,false,true,false,true,false,false],
+					[false,true,false,true,false,true,false],
+					[false,false,true,false,true,false,true],
+					[false,false,false,true,false,false,false]
+				],
+		"Horizontal": [   
+					[true,false,true,false,false,false,false],
+					[false,true,false,true,false,false,false],
+					[true,false,true,false,true,false,false],
+					[false,true,false,true,false,true,false],
+					[false,false,true,false,true,false,true],
+					[false,false,false,true,false,true,false],
+					[false,false,false,false,false,false,true]
+				]
+	},
+	{"Name":"Maze 7",
+		"ImageName":"index.jpg",
+		"difficulty":0.5,
+		"startCol":3,
+		"startRow":3,
+		"endRow":3,
+		"endCol":4,
+		"rowNum":7,
+		"colNum":7,
+		"Vertical": [   
+					[false,false,false,false,false,false,false],
+					[true,false,true,true,false,false,false],
+					[true,true,true,true,false,false,false],
+					[true,true,true,true,true,false,false],
+					[true,true,true,true,true,false,false],
+					[true,true,true,true,true,false,false],
+					[false,true,false,true,false,false,false]
+				],
+		"Horizontal": [   
+					[false,true,true,true,true,true,false],
+					[false,false,false,false,false,true,true],
+					[false,false,false,false,true,true,false],
+					[false,false,false,false,false,false,true],
+					[false,false,false,false,false,true,false],
+					[false,false,false,false,false,false,true],
+					[false,false,false,false,false,false,false]
+				]
+	},
+	{"Name":"Maze 8",
+		"ImageName":"index.jpg",
+		"difficulty":0.5,
+		"startCol":0,
+		"startRow":0,
+		"endRow":1,
+		"endCol":7,
+		"rowNum":3,
+		"colNum":8,
+		"Vertical": [   
+					[true,false,true,false,true,false,true,false],
+					[true,true,true,true,true,true,true,false],
+					[false,true,false,true,false,true,false,false]
+					
+				],
+		"Horizontal": [   
+					[false,false,false,false,false,false,false,false],
+					[false,false,false,false,false,false,false,false],
+					[false,false,false,false,false,false,false,false]
+				]
+	}
+	]
 }
 }
