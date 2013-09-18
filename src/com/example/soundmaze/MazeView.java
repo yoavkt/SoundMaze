@@ -187,7 +187,7 @@ public class MazeView extends View {
 			_score=_score-5;
 			_life=_life-1;
 		}
-		return true;
+		return moved;
 	}
 	
 }

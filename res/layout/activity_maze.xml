@@ -17,64 +17,102 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blue"
-        android:orientation="horizontal" >
+        android:orientation="vertical" >
 
-        <com.example.soundmaze.MicButton
-            android:id="@+id/buttonMicrophone1"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/LinearLayout1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:layout_marginRight="12dp"
-            android:background="@drawable/button_mic"
-            android:contentDescription="@string/buttonMicrophoneContentDescription"
-            android:gravity="center"
-            android:padding="20dp"
-            android:src="@drawable/ic_btn_speak_now" />
+            android:background="@color/blue"
+            android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/textScore"
-            android:layout_width="wrap_content"
+            <com.example.soundmaze.MicButton
+                android:id="@+id/buttonMicrophone1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/button_mic"
+                android:contentDescription="@string/buttonMicrophoneContentDescription"
+                android:gravity="center"
+                android:padding="20dp"
+                android:src="@drawable/ic_btn_speak_now" />
+
+            <TextView
+                android:id="@+id/textScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Your Score: 0"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/textMove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Say Somthing!"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <Button
+                android:id="@+id/buttonHero"
+                android:layout_width="68dp"
+                android:layout_height="78dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/hero"
+                android:padding="20dp"
+                android:text="" />
+
+            <Button
+                android:id="@+id/buttonBack"
+                android:layout_width="68dp"
+                android:layout_height="78dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/backb"
+                android:padding="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayout1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Your Score: 0"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:background="@color/blue"
+            android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/textMove"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Say Somthing!"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lifes:"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
-   <Button
-            android:id="@+id/buttonHero"
-            android:layout_width="68dp"
-            android:layout_height="78dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="11dp"
-            android:background="@drawable/hero"
-            android:padding="20dp"
-            android:text="" />
-        
-        
-        <Button
-            android:id="@+id/buttonBack"
-            android:layout_width="68dp"
-            android:layout_height="78dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="11dp"
-            android:background="@drawable/backb"
-            android:padding="20dp" />
+            <ImageView
+                android:id="@+id/ImageView01"
+                android:layout_width="34dp"
+                android:layout_height="54dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/life" />
 
-     
+            <ImageView
+                android:id="@+id/ImageView02"
+                android:layout_width="34dp"
+                android:layout_height="54dp"
+                android:src="@drawable/life" />
 
+            <ImageView
+                android:id="@+id/ImageView03"
+                android:layout_width="34dp"
+                android:layout_height="54dp"
+                android:src="@drawable/life" />
+        </LinearLayout>
     </LinearLayout>
 
     <com.example.soundmaze.MazeView
         android:id="@+id/mazeView"
-         android:layout_marginTop="11dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp" />
 
 </LinearLayout>

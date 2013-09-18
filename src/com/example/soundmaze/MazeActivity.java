@@ -26,6 +26,7 @@ import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,7 +56,10 @@ public class MazeActivity extends Activity {
 	MazeView myMazeView;
 	TextView textMove;
 	TextView textScore;
-
+	ImageView life1;
+	ImageView life2;
+	ImageView life3;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +76,9 @@ public class MazeActivity extends Activity {
 		mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 		mButtonMicrophone1 = (MicButton) findViewById(R.id.buttonMicrophone1);
 		
+		life1=(ImageView)findViewById(R.id.ImageView01);
+		life2=(ImageView)findViewById(R.id.ImageView02);
+		life3=(ImageView)findViewById(R.id.ImageView03);
 		Button back=(Button)findViewById(R.id.buttonBack);
 		back.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -281,11 +288,14 @@ public class MazeActivity extends Activity {
 					}
 					textMove.setText(moveResult);
 					myMazeView.movementUpdater(move);
+					changeLife(myMazeView.getLife());
+					
 					if (myMazeView.getLife()==0)
 					{
 						myMazeView.restartMaze();
 						textScore.setText("Your Score: 0");
 						Toast.makeText(getApplicationContext(), "Too bad Try Again!", Toast.LENGTH_LONG).show();
+						changeLife(myMazeView.getLife());
 					}
 					else{
 						
@@ -309,6 +319,34 @@ public class MazeActivity extends Activity {
 			}
 		});
 		sr.startListening(createRecognizerIntent());
+	}
+	
+	private void changeLife(int lifes){
+		switch (lifes) {
+		case 2:
+			life3.setVisibility(life3.INVISIBLE);
+			life2.setVisibility(life2.VISIBLE);
+			life1.setVisibility(life1.VISIBLE);
+			break;
+		case 1:
+			life3.setVisibility(life3.INVISIBLE);
+			life2.setVisibility(life2.INVISIBLE);
+			life1.setVisibility(life1.VISIBLE);
+			break;
+		case 3:
+			life3.setVisibility(life3.VISIBLE);
+			life2.setVisibility(life2.VISIBLE);
+			life1.setVisibility(life1.VISIBLE);
+			break;
+		case 0:
+			life3.setVisibility(life3.INVISIBLE);
+			life2.setVisibility(life2.INVISIBLE);
+			life1.setVisibility(life1.INVISIBLE);
+			break;
+		default:
+			break;
+		}
+		
 	}
 }
 
