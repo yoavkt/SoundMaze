@@ -4,7 +4,7 @@
 "Maze":[
 	{"Name":"Maze 1",
 		"ImageName":"index.jpg",
-		"difficulty":0,
+		"difficulty":2,
 		"startCol":0,
 		"startRow":0,
 		"rowNum":10,
@@ -39,7 +39,7 @@
 	,
 	{"Name":"Maze 2",
 		"ImageName":"index.jpg",
-		"difficulty":0,
+		"difficulty":2.2,
 		"startCol":4,
 		"startRow":4,
 		"endRow":0,
