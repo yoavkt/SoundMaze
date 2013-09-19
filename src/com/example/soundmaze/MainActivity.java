@@ -6,10 +6,12 @@ import org.json.JSONException;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	
@@ -19,6 +21,10 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_main);
+		TextView header = (TextView) findViewById(R.id.mainHeader);
+		Typeface face1 = Typeface.createFromAsset(getAssets(),
+				"FontleroyBrown.ttf");
+		header.setTypeface(face1);
 		try {
 			 myMazeMaster=new MazeMaster(this.getApplicationContext());
 			
@@ -29,30 +35,23 @@ public class MainActivity extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		Typeface face = Typeface.createFromAsset(getAssets(),
+				"Chunkfive.otf");
 		
 		final Button btnMaze1 = (Button) findViewById(R.id.btnMainMaze1);
+		btnMaze1.setTypeface(face);
 		btnMaze1.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent myIntent = new Intent(MainActivity.this,
-						MazeActivity.class);
-				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 1"));
+						LevelsActivity.class);
 				MainActivity.this.startActivity(myIntent);
 			}
 		});
 
-		final Button btnMaze2 = (Button) findViewById(R.id.btnMainMaze2);
-		btnMaze2.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				Intent myIntent = new Intent(MainActivity.this,
-						MazeActivity.class);
-				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 2"));
-				MainActivity.this.startActivity(myIntent);
-			
-				
-			}
-		});
+
 
 		final Button btnMainTopScores = (Button) findViewById(R.id.btnMainTopScores);
+		btnMainTopScores.setTypeface(face);
 		btnMainTopScores.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent myIntent = new Intent(MainActivity.this,
@@ -61,6 +60,7 @@ public class MainActivity extends Activity {
 			}
 		});
 		final Button btnMainInst = (Button) findViewById(R.id.btnMainInst);
+		btnMainInst.setTypeface(face);
 		btnMainInst.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent myIntent = new Intent(MainActivity.this,
