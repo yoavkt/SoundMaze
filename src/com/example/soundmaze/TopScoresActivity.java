@@ -6,12 +6,14 @@ import java.util.List;
 
 import android.app.Activity;
 import android.database.DataSetObserver;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class TopScoresActivity extends Activity {
 	UserAdapter adapter;
@@ -23,7 +25,11 @@ public class TopScoresActivity extends Activity {
 
 		final ListView listTasks = 
 				(ListView)findViewById(R.id.listView1);
-
+		TextView topScoreText=(TextView)findViewById(R.id.topScoreText);
+		Typeface face = Typeface.createFromAsset(getAssets(),
+				"Chunkfive.otf");
+		topScoreText.setTypeface(face);
+		
 		TableHelper th=new TableHelper(this);
 		List<User> tasks = th.all();
 

@@ -8,6 +8,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ResolveInfo;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -39,6 +40,12 @@ public class InstructActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_instruct);
+		TextView text1=(TextView)findViewById(R.id.colorshelp);
+		TextView text3=(TextView)findViewById(R.id.textViewInstruct);
+		Typeface face = Typeface.createFromAsset(getAssets(),
+				"Chunkfive.otf");
+		text3.setTypeface(face);
+		text1.setTypeface(face);
 		mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 		mTvFeedback = (TextView) findViewById(R.id.tvFeedback);
 		mButtonMicrophone = (MicButton) findViewById(R.id.buttonMicrophone);
@@ -231,11 +238,11 @@ public class InstructActivity extends Activity {
 		{
 			switch(val){
 			case 1:
-				return "Vary good ! say on more time";
+				return "Very good ! say one more time";
 			case 0:
 				return "O.K now say "+dir;
 			default:
-				return "Well resart the training or go & play!";
+				return "go & play!";
 			}
 		}
 		public static String correctProgress(int code){
@@ -262,10 +269,10 @@ public class InstructActivity extends Activity {
 				}
 				else return "Try to say left";
 			if (rights>0)
-				if (code==2)
+				if (code==4)
 				{
 					rights=rights-1;
-					return nextMessage("down",rights);
+					return nextMessage("hh",8);
 				}
 				else return "Try to say right";
 			return "Now you are ready!";

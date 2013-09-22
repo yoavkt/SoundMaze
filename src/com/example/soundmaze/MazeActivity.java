@@ -17,6 +17,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ResolveInfo;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -79,10 +80,23 @@ public class MazeActivity extends Activity {
 		life1=(ImageView)findViewById(R.id.ImageView01);
 		life2=(ImageView)findViewById(R.id.ImageView02);
 		life3=(ImageView)findViewById(R.id.ImageView03);
-		Button back=(Button)findViewById(R.id.buttonBack);
-		back.setOnClickListener(new View.OnClickListener() {
+		
+		
+		TextView text1=(TextView)findViewById(R.id.textMove);
+		TextView text2=(TextView)findViewById(R.id.textView1);
+		TextView text3=(TextView)findViewById(R.id.textScore);
+		Typeface face = Typeface.createFromAsset(getAssets(),
+				"Chunkfive.otf");
+		text1.setTypeface(face);
+		text2.setTypeface(face);
+		text3.setTypeface(face);
+		
+		Button guide=(Button)findViewById(R.id.giudebtn);
+		guide.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				finish();
+				Intent myIntent = new Intent(MazeActivity.this,
+						InstructActivity.class);
+				MazeActivity.this.startActivity(myIntent);
 			}
 		});
 		
