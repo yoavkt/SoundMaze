@@ -275,7 +275,7 @@ public class MazeActivity extends Activity {
 				mState = State.INIT;
 				if (!matches.isEmpty()) {
 					String result = matches.iterator().next();
-					String moveResult="Ball heard:";
+					String moveResult="Dog heard:";
 					int dir=Utils.phraseDistances(result);
 					int move=0;
 					switch (dir) {

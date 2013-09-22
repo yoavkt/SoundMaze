@@ -4,7 +4,7 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mymaze2"
+    android:background="@drawable/gameback4"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_vertical_margin"
@@ -38,7 +38,7 @@
 
             <TextView
                 android:id="@+id/textMove"
-                android:textColor="@color/white"
+                
                 android:textSize="30sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,7 +75,6 @@
             <TextView
                 android:id="@+id/textView1"
                 android:textSize="30sp"
-                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lifes:"
@@ -105,7 +104,6 @@
 
             <TextView
                 android:id="@+id/textScore"
-                android:textColor="@color/white"
                 android:textSize="30sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

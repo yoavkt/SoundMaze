@@ -39,7 +39,7 @@ public class LevelsActivity extends Activity {
 			public void onClick(View v) {
 				Intent myIntent = new Intent(LevelsActivity.this,
 						MazeActivity.class);
-				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 1"));
+				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 3"));
 				LevelsActivity.this.startActivity(myIntent);
 			}
 		});
@@ -50,7 +50,7 @@ public class LevelsActivity extends Activity {
 			public void onClick(View v) {
 				Intent myIntent = new Intent(LevelsActivity.this,
 						MazeActivity.class);
-				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 2"));
+				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 8"));
 				LevelsActivity.this.startActivity(myIntent);
 
 
@@ -63,7 +63,7 @@ public class LevelsActivity extends Activity {
 			public void onClick(View v) {
 				Intent myIntent = new Intent(LevelsActivity.this,
 						MazeActivity.class);
-				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 3"));
+				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 5"));
 				LevelsActivity.this.startActivity(myIntent);
 
 
@@ -76,7 +76,7 @@ public class LevelsActivity extends Activity {
 			public void onClick(View v) {
 				Intent myIntent = new Intent(LevelsActivity.this,
 						MazeActivity.class);
-				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 4"));
+				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 6"));
 				LevelsActivity.this.startActivity(myIntent);
 
 
@@ -89,7 +89,7 @@ public class LevelsActivity extends Activity {
 			public void onClick(View v) {
 				Intent myIntent = new Intent(LevelsActivity.this,
 						MazeActivity.class);
-				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 5"));
+				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 4"));
 				LevelsActivity.this.startActivity(myIntent);
 
 
@@ -102,7 +102,7 @@ public class LevelsActivity extends Activity {
 			public void onClick(View v) {
 				Intent myIntent = new Intent(LevelsActivity.this,
 						MazeActivity.class);
-				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 6"));
+				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 7"));
 				LevelsActivity.this.startActivity(myIntent);
 
 
@@ -115,7 +115,7 @@ public class LevelsActivity extends Activity {
 			public void onClick(View v) {
 				Intent myIntent = new Intent(LevelsActivity.this,
 						MazeActivity.class);
-				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 7"));
+				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 2"));
 				LevelsActivity.this.startActivity(myIntent);
 
 
@@ -128,7 +128,7 @@ public class LevelsActivity extends Activity {
 			public void onClick(View v) {
 				Intent myIntent = new Intent(LevelsActivity.this,
 						MazeActivity.class);
-				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 8"));
+				myIntent.putExtra("maze", myMazeMaster.getMaze("Maze 1"));
 				LevelsActivity.this.startActivity(myIntent);
 
 

@@ -3,8 +3,12 @@ package com.example.soundmaze;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
@@ -27,7 +31,8 @@ public class MazeView extends View {
 	private int _score=0;
 	private int _scoreFactor=1;
 	private int _life=3;
-	private Canvas myCanvas;
+	Bitmap playerBitMap;
+	Bitmap goalBitMap;
 //	TextView textScore;
 
 	public MazeView(Context context, AttributeSet attrs) {
@@ -36,6 +41,8 @@ public class MazeView extends View {
 		setFocusable(true);
 		this.setFocusableInTouchMode(true);
 		setDisplayItmes();
+		 playerBitMap=BitmapFactory.decodeResource(getResources(), R.drawable.dogpawn_small);
+		 goalBitMap=BitmapFactory.decodeResource(getResources(), R.drawable.bone);
 //		textScore=(TextView)findViewById(R.id.textScore);
 		
 		
@@ -85,7 +92,8 @@ public class MazeView extends View {
 		red = new Paint();
 		red.setColor(getResources().getColor(R.color.ball));
 		background = new Paint();
-		background.setColor(getResources().getColor(R.color.board));
+		background.setColor(getResources().getColor(R.color.blue));
+//		setBackgroundResource(R.drawable.trophygolden2);
 		}
 	public void setMaze(Maze maze)
 	{
@@ -107,7 +115,6 @@ public class MazeView extends View {
 		
 	}
 	protected void onDraw(Canvas canvas) {
-		myCanvas=canvas;
 		if (_maze!=null){
 		canvas.drawRect(0, 0, width, height, background);
 		drawWalls(canvas);
@@ -117,17 +124,32 @@ public class MazeView extends View {
 	}
 	public void drawPlayer(Canvas canvas)
 	{
-		canvas.drawCircle((_maze.get_currentPoint().x * totalCellWidth)+(cellWidth/2),   //x of center
-				  (_maze.get_currentPoint().y * totalCellHeight)+(cellWidth/2),  //y of center
-				  (cellWidth*0.45f),                           //radius
-				  red);
+	//	canvas.drawCircle((_maze.get_currentPoint().x * totalCellWidth)+(cellWidth/2),   //x of center
+		//		  (_maze.get_currentPoint().y * totalCellHeight)+(cellWidth/2),  //y of center
+			//	  (cellWidth*0.45f),                           //radius
+				//   line);
+		//canvas.drawRect(0, 0, 50, 50, red);
+		
+		Rect rc=new Rect((int)(_maze.get_currentPoint().x * totalCellWidth),
+					(int)(_maze.get_currentPoint().y * totalCellHeight),
+					(int)((_maze.get_currentPoint().x * totalCellWidth)+(totalCellWidth-5)),
+						(int)((_maze.get_currentPoint().y * totalCellHeight)+totalCellHeight-5));
+		
+		//canvas.drawRect(rc, red);
+		//canvas.drawBitmap(bm, 0, 0, null);
+		canvas.drawBitmap(playerBitMap, null, rc, null);
 	}
 	public void drawEndPoint(Canvas canvas)
 	{
-	    canvas.drawText("F",
-                (_maze.get_pointEnd().x * totalCellWidth)+(cellWidth*0.25f),
-                (_maze.get_pointEnd().y * totalCellHeight)+(cellHeight*0.75f),
-                red);
+		Rect rc=new Rect((int)(_maze.get_pointEnd().x * totalCellWidth),
+				(int)(_maze.get_pointEnd().y * totalCellHeight),
+				(int)((_maze.get_pointEnd().x * totalCellWidth)+(totalCellWidth-5)),
+					(int)((_maze.get_pointEnd().y * totalCellHeight)+totalCellHeight-5));
+		canvas.drawBitmap(goalBitMap, null, rc, null);
+	//    canvas.drawText("F",
+       //         (_maze.get_pointEnd().x * totalCellWidth)+(cellWidth*0.25f),
+        //        (_maze.get_pointEnd().y * totalCellHeight)+(cellHeight*0.75f),
+        //        red);
 	}
 	public void drawWalls(Canvas canvas)
 	{
