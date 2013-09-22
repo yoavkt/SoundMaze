@@ -107,7 +107,8 @@ public class Maze implements Parcelable  {
 		_difficulty=jsonObject.getDouble("difficulty");
 	}
 	public void resetLocation(){
-		_currentPoint=_startPoint;
+		_currentPoint.x=_startPoint.x;
+		_currentPoint.y=_startPoint.y;
 	}
 	public String get_mazeName() {
 		return _mazeName;

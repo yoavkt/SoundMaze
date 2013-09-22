@@ -29,8 +29,9 @@ public class MazeView extends View {
 	//the finishing point of the maze
 	private Paint line, red, background;
 	private int _score=0;
-	private int _scoreFactor=1;
+	private double _scoreFactor=1;
 	private int _life=3;
+	
 	Bitmap playerBitMap;
 	Bitmap goalBitMap;
 //	TextView textScore;
@@ -41,6 +42,7 @@ public class MazeView extends View {
 		setFocusable(true);
 		this.setFocusableInTouchMode(true);
 		setDisplayItmes();
+		_scoreFactor=_maze.get_difficulty();
 		 playerBitMap=BitmapFactory.decodeResource(getResources(), R.drawable.dogpawn_small);
 		 goalBitMap=BitmapFactory.decodeResource(getResources(), R.drawable.bone);
 //		textScore=(TextView)findViewById(R.id.textScore);
@@ -201,10 +203,10 @@ public class MazeView extends View {
 				moved= false;
 		}
 		if(moved) {
-			_score=(_score+5)*_scoreFactor;
+			_score=(int)((_score+5)*_scoreFactor);
 			invalidate();
 			if(_maze.winMaze()) {
-				_score=_score+100*_scoreFactor;
+				_score=(int)(_score+100*_scoreFactor);
 			}
 		}else{
 			_score=_score-5;
