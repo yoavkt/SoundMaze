@@ -316,9 +316,12 @@ public class MazeActivity extends Activity {
 					
 						textScore.setText("Your Score: " +String.valueOf(myMazeView.get_score()));
 					if (myMazeView.getWin()){
+						int scoretmp=myMazeView.get_score();
+						textScore.setText("Your Score: " +String.valueOf(myMazeView.get_score()));
+						myMazeView.restartMaze();
 						Intent myIntent = new Intent(MazeActivity.this,
 								AddUserActivity.class);
-						myIntent.putExtra("score", myMazeView.get_score());
+						myIntent.putExtra("score", scoretmp);
 						MazeActivity.this.startActivity(myIntent);
 					}}
 						
