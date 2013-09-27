@@ -42,7 +42,7 @@ public class MazeView extends View {
 		setFocusable(true);
 		this.setFocusableInTouchMode(true);
 		setDisplayItmes();
-		_scoreFactor=_maze.get_difficulty();
+		_scoreFactor=1;//_maze.get_difficulty();
 		 playerBitMap=BitmapFactory.decodeResource(getResources(), R.drawable.dogpawn_small);
 		 goalBitMap=BitmapFactory.decodeResource(getResources(), R.drawable.bone);
 //		textScore=(TextView)findViewById(R.id.textScore);
@@ -75,16 +75,17 @@ public class MazeView extends View {
 	}
 	public void startMazeHeroMode()
 	{
-		_scoreFactor=(int) (3*_maze.get_difficulty());
+		_scoreFactor=3;//(int) (3*_maze.get_difficulty());
 		background = new Paint();
 		background.setColor(getResources().getColor(R.color.wall));
 		 invalidate();
 	}
 	public void unHeroMode()
 	{
-		_scoreFactor=(int) (1*_maze.get_difficulty());
+		//TODO socre
+		_scoreFactor=1;//(int) (1*_maze.get_difficulty());
 		background = new Paint();
-		background.setColor(getResources().getColor(R.color.board));
+		background.setColor(getResources().getColor(R.color.blue));
 		 invalidate();
 	}
 	private void setDisplayItmes()

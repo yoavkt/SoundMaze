@@ -273,6 +273,7 @@ public class MazeActivity extends Activity {
 				sr.stopListening();
 				ArrayList<String> matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
 				mState = State.INIT;
+				boolean listen=true;
 				if (!matches.isEmpty()) {
 					String result = matches.iterator().next();
 					String moveResult="Dog heard:";
@@ -310,6 +311,7 @@ public class MazeActivity extends Activity {
 						textScore.setText("Your Score: 0");
 						Toast.makeText(getApplicationContext(), "Too bad Try Again!", Toast.LENGTH_LONG).show();
 						changeLife(myMazeView.getLife());
+						listen=false;
 					}
 					else{
 						
@@ -323,11 +325,14 @@ public class MazeActivity extends Activity {
 								AddUserActivity.class);
 						myIntent.putExtra("score", scoretmp);
 						MazeActivity.this.startActivity(myIntent);
+						listen=false;
 					}}
 						
 					
 				}
+				if(listen){
 				sr.startListening(createRecognizerIntent());
+				}
 			}
 
 			@Override
