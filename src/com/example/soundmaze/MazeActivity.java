@@ -315,7 +315,8 @@ public class MazeActivity extends Activity {
 						
 					
 						textScore.setText("Your Score: " +String.valueOf(myMazeView.get_score()));
-					if (myMazeView.getWin()){
+					
+				if (myMazeView.getWin()){
 						int scoretmp=myMazeView.get_score();
 						textScore.setText("Your Score: 0");
 						myMazeView.restartMaze();
@@ -323,7 +324,8 @@ public class MazeActivity extends Activity {
 								AddUserActivity.class);
 						myIntent.putExtra("score", scoretmp);
 						MazeActivity.this.startActivity(myIntent);
-					}}
+					}
+					}
 						
 					
 				}
