@@ -37,7 +37,7 @@
 				]
 	}
 	,
-	{"Name":"Maze 7",
+	{"Name":"Maze 6",
 		"ImageName":"index.jpg",
 		"difficulty":2.5,
 		"startCol":4,
@@ -203,13 +203,13 @@
 					[false,false,false,false,false,false,false]
 				]
 	},
-	{"Name":"Maze 6",
+	{"Name":"Maze 7",
 		"ImageName":"index.jpg",
 		"difficulty":2.5,
 		"startCol":0,
 		"startRow":9,
-		"endRow":4,
-		"endCol":4,
+		"endRow":0,
+		"endCol":9,
 		"rowNum":10,
 		"colNum":10,
 		"Vertical": [   
