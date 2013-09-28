@@ -22,7 +22,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.example.soundmaze.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.speech.action.RECOGNIZE_SPEECH" />
 
@@ -35,19 +36,23 @@
         </activity>
         <activity
             android:name="com.example.soundmaze.MazeActivity"
-            android:label="@string/title_activity_maze" >
+            android:label="@string/title_activity_maze" 
+            android:screenOrientation="portrait">
         </activity>
          <activity
             android:name="com.example.soundmaze.LevelsActivity"
-            android:label="Levels" >
+            android:label="Levels" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.example.soundmaze.TopScoresActivity"
-            android:label="@string/title_activity_top_scores" >
+            android:label="@string/title_activity_top_scores" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.example.soundmaze.InstructActivity"
-            android:label="@string/title_activity_instruct" >
+            android:label="@string/title_activity_instruct" 
+            android:screenOrientation="portrait">
             
                         <intent-filter>
                 <action android:name="android.speech.action.RECOGNIZE_SPEECH" />
@@ -57,21 +62,26 @@
         </activity>
         <activity
             android:name="com.example.soundmaze.Game"
-            android:label="@string/title_activity_game" >
+            android:label="@string/title_activity_game"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.example.soundmaze.AddUserActivity"
             android:label="Add New High Score"
-            android:theme="@android:style/Theme.Dialog" >
+            android:theme="@android:style/Theme.Dialog" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.example.soundmaze.TryActivity"
-            android:label="@string/title_activity_try" >
+            android:label="@string/title_activity_try" 
+            android:screenOrientation="portrait">
         </activity>
                 <provider
             android:name="com.example.soundmaze.provider.BabbleContentProvider"
             android:authorities="com.example.soundmaze.provider.BabbleContentProvider"
             android:exported="false" />
+
+          
     </application>
 
 </manifest>
