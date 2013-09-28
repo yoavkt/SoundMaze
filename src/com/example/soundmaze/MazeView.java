@@ -13,15 +13,9 @@ import android.view.View;
 public class MazeView extends View {
 	
 	public Maze _maze;
-	//width and height of the whole maze and width of lines which
-	//make the walls
 	private int width, height, lineWidth;
-	//width and height of cells in the maze
 	float cellWidth, cellHeight;
-	//the following store result of cellWidth+lineWidth 
-	//and cellHeight+lineWidth respectively 
 	float totalCellWidth, totalCellHeight;
-	//the finishing point of the maze
 	private Paint line, red, background;
 	private int _score=0;
 	private double _scoreFactor=1;
@@ -35,11 +29,9 @@ public class MazeView extends View {
 		setFocusable(true);
 		this.setFocusableInTouchMode(true);
 		setDisplayItmes();
-		_scoreFactor=1;//_maze.get_difficulty();
+		_scoreFactor=1;
 		 playerBitMap=BitmapFactory.decodeResource(getResources(), R.drawable.dogpawn_small);
 		 goalBitMap=BitmapFactory.decodeResource(getResources(), R.drawable.bone);
-		
-		
 	}
 	
 	public MazeView(Context context, Maze maze) {
@@ -66,15 +58,15 @@ public class MazeView extends View {
 	}
 	public void startMazeHeroMode()
 	{
-		_scoreFactor=3;//(int) (3*_maze.get_difficulty());
+		_scoreFactor=3;
 		background = new Paint();
 		background.setColor(getResources().getColor(R.color.wall));
 		 invalidate();
 	}
 	public void unHeroMode()
 	{
-		//TODO socre
-		_scoreFactor=1;//(int) (1*_maze.get_difficulty());
+		
+		_scoreFactor=1;
 		background = new Paint();
 		background.setColor(getResources().getColor(R.color.blue));
 		 invalidate();
@@ -97,7 +89,7 @@ public class MazeView extends View {
 		
 		width = (w < h)?w:h;
 		height=width;   
-		lineWidth = 1;          //for now 1 pixel wide walls
+		lineWidth = 1;        
 		cellWidth = (width - ((float)_maze.get_mazeColNum()*lineWidth)) / _maze.get_mazeColNum();
 		totalCellWidth = cellWidth+lineWidth;
 		cellHeight = (height - ((float)_maze.get_mazeRowNum()*lineWidth)) / (float)_maze.get_mazeRowNum();
@@ -117,19 +109,14 @@ public class MazeView extends View {
 	}
 	public void drawPlayer(Canvas canvas)
 	{
-	//	canvas.drawCircle((_maze.get_currentPoint().x * totalCellWidth)+(cellWidth/2),   //x of center
-		//		  (_maze.get_currentPoint().y * totalCellHeight)+(cellWidth/2),  //y of center
-			//	  (cellWidth*0.45f),                           //radius
-				//   line);
-		//canvas.drawRect(0, 0, 50, 50, red);
+
 		
 		Rect rc=new Rect((int)(_maze.get_currentPoint().x * totalCellWidth),
 					(int)(_maze.get_currentPoint().y * totalCellHeight),
 					(int)((_maze.get_currentPoint().x * totalCellWidth)+(totalCellWidth-5)),
 						(int)((_maze.get_currentPoint().y * totalCellHeight)+totalCellHeight-5));
 		
-		//canvas.drawRect(rc, red);
-		//canvas.drawBitmap(bm, 0, 0, null);
+
 		canvas.drawBitmap(playerBitMap, null, rc, null);
 	}
 	public void drawEndPoint(Canvas canvas)
@@ -139,10 +126,7 @@ public class MazeView extends View {
 				(int)((_maze.get_pointEnd().x * totalCellWidth)+(totalCellWidth-5)),
 					(int)((_maze.get_pointEnd().y * totalCellHeight)+totalCellHeight-5));
 		canvas.drawBitmap(goalBitMap, null, rc, null);
-	//    canvas.drawText("F",
-       //         (_maze.get_pointEnd().x * totalCellWidth)+(cellWidth*0.25f),
-        //        (_maze.get_pointEnd().y * totalCellHeight)+(cellHeight*0.75f),
-        //        red);
+
 	}
 	public void drawWalls(Canvas canvas)
 	{
@@ -151,19 +135,19 @@ public class MazeView extends View {
 				float x = j * totalCellWidth;
 				float y = i * totalCellHeight;
 				if(j < _maze.get_mazeRowNum() - 1 && _maze.get_verticalWall()[i][j]) {
-					//we'll draw a vertical line
+
 					canvas.drawLine(x + cellWidth,
-									y,               //start Y
-									x + cellWidth,   //stop X
-									y + cellHeight,  //stop Y
+									y,               
+									x + cellWidth,   
+									y + cellHeight,  
 									line);
 				}
 				if(i < _maze.get_mazeColNum() - 1 && _maze.get_horizontalWall()[i][j]) {
-					//we'll draw a horizontal line
-					canvas.drawLine(x,               //startX 
-									y + cellHeight,  //startY 
-								    x + cellWidth,   //stopX 
-								    y + cellHeight,  //stopY 
+
+					canvas.drawLine(x,               
+									y + cellHeight, 
+								    x + cellWidth,   
+								    y + cellHeight, 
 									line);
 				}
 			}
@@ -194,8 +178,8 @@ public class MazeView extends View {
 				moved= false;
 		}
 		if(moved) {
-			double tmp=_maze.get_difficulty();
-			_score=(int)(_score+(5*_scoreFactor*tmp));
+			
+			_score=(int)(_score+(5*_scoreFactor*_maze.get_difficulty()));
 			invalidate();
 			if(_maze.winMaze()) {
 				_score=(int)(_score+100*_scoreFactor);
