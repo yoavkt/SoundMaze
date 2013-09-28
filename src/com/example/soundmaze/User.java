@@ -1,6 +1,5 @@
 package com.example.soundmaze;
 
-import java.util.Date;
 
 public class User {
 	private String _name;
