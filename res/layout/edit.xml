@@ -13,14 +13,14 @@
             android:id="@+id/textViewInstruct"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:text="Insert User Name" />
+            android:text="@string/insert_user_name" />
     </LinearLayout>
 
     <EditText
         android:id="@+id/edtNewName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10" >
+        android:ems="10" android:inputType="text">
 
         <requestFocus />
     </EditText>

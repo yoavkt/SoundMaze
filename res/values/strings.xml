@@ -32,5 +32,22 @@
     <string name="buttonMicrophoneContentDescription">Press this button to speak a phrase</string>
     <string name="title_activity_try">TryActivity</string>
     <string name="instruct">Press the button and  say the following words twice in that order - up, down, left &amp; right</string>
+    <string name="yellow_you_can_press_the_button_and_it_wil_listen_nred_we_are_listening_speak_npurple_we_heard_you_analyzing_results">Yellow- you can press the button and it wil listen\\nRed- we are listening, speak\\nPurple- we heard you, analyzing results</string>
+    <string name="level_1">Level 1</string>
+    <string name="level_2">Level 2</string>
+    <string name="level_3">Level 3</string>
+    <string name="level_4">Level 4</string>
+    <string name="level_5">Level 5</string>
+    <string name="level_6">Level 6</string>
+    <string name="level_7">Level 7</string>
+    <string name="level_8">Level 8</string>
+    <string name="sound_maze">SOUND MAZE</string>
+    <string name="levels">Levels</string>
+    <string name="say_somthing_">Say Somthing!</string>
+    <string name="lifes_">Lifes:</string>
+    <string name="your_score_0">Your Score: 0</string>
+    <string name="insert_user_name">Insert User Name</string>
+    <string name="ffffff">ffffff</string>
+    <string name="hhhhhhhhh">hhhhhhhhh</string>
 
 </resources>

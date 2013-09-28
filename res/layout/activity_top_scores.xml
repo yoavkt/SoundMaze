@@ -16,7 +16,7 @@
         android:layout_alignLeft="@+id/listView1"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="100dp"
-        android:text="Top Scores"
+        android:text="@string/top_scores"
         android:textSize="60sp" />
 
     <ListView

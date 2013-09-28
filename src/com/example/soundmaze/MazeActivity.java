@@ -25,10 +25,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.soundmaze.Constants.State;
 
-
-
-
-
 public class MazeActivity extends Activity {
 
 	Maze stageMaze;
@@ -198,8 +194,6 @@ public class MazeActivity extends Activity {
 
 
 	private void startListening(final SpeechRecognizer sr, final boolean isStorePhrase) {
-		//		Intent intentRecognizer = createRecognizerIntent();
-
 		final Runnable stopListening = new Runnable() {
 			@Override
 			public void run() {
@@ -295,8 +289,6 @@ public class MazeActivity extends Activity {
 						listen=false;
 					}
 					else{
-
-
 						textScore.setText("Your Score: " +String.valueOf(myMazeView.get_score()));
 
 						if (myMazeView.getWin()){

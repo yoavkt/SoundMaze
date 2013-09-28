@@ -6,12 +6,12 @@
 
     <TextView
         android:id="@+id/txtName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_weight="0.65"
         android:gravity="left"
-        android:text="ffffff"
+        android:text="@string/ffffff"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:gravity="right"
-        android:text="hhhhhhhhh"
+        android:text="@string/hhhhhhhhh"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </LinearLayout>

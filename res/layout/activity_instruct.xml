@@ -15,7 +15,6 @@
         android:layout_height="@dimen/heightMainMic"
         android:layout_gravity="center"
         android:layout_margin="4dp"
-        android:layout_weight="1"
         android:background="@drawable/button_mic"
         android:contentDescription="@string/buttonMicrophoneContentDescription"
         android:gravity="center"
@@ -52,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvFeedback"
         android:layout_marginTop="100dp"
-        android:text="Yellow- you can press the button and it wil listen\nRed- we are listening, speak\nPurple- we heard you, analyzing results"
+        android:text="@string/yellow_you_can_press_the_button_and_it_wil_listen_nred_we_are_listening_speak_npurple_we_heard_you_analyzing_results"
         android:textColor="@color/white"
         android:textSize="@dimen/textSizeMainFeedback" />
 
