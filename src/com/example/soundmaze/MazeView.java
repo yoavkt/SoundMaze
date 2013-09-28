@@ -194,7 +194,8 @@ public class MazeView extends View {
 				moved= false;
 		}
 		if(moved) {
-			_score=(int)(_score+(5*_scoreFactor));
+			double tmp=_maze.get_difficulty();
+			_score=(int)(_score+(5*_scoreFactor*tmp));
 			invalidate();
 			if(_maze.winMaze()) {
 				_score=(int)(_score+100*_scoreFactor);
