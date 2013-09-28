@@ -2,7 +2,7 @@
 "Mazes":{
 "Version":"V1",
 "Maze":[
-	{"Name":"Maze 1",
+	{"Name":"Maze 8",
 		"ImageName":"index.jpg",
 		"difficulty":2.5,
 		"startCol":0,
@@ -37,7 +37,7 @@
 				]
 	}
 	,
-	{"Name":"Maze 2",
+	{"Name":"Maze 7",
 		"ImageName":"index.jpg",
 		"difficulty":2.5,
 		"startCol":4,
@@ -71,9 +71,9 @@
 					[false,false,false,false,false,false,false,false,false,false]
 				]
 	},
-	{"Name":"Maze 3",
+	{"Name":"Maze 1",
 		"ImageName":"index.jpg",
-		"difficulty":1.5,
+		"difficulty":1,
 		"startCol":0,
 		"startRow":0,
 		"endRow":3,
@@ -93,7 +93,7 @@
 					[false,false,false,false]
 				]
 	},
-	{"Name":"Maze 4",
+	{"Name":"Maze 2",
 		"ImageName":"index.jpg",
 		"difficulty":1.7,
 		"startCol":0,
@@ -119,7 +119,7 @@
 					[false,false,false,false,false,false]
 				]
 	},
-	{"Name":"Maze 5",
+	{"Name":"Maze 3",
 		"ImageName":"index.jpg",
 		"difficulty":1.7,
 		"startCol":0,
@@ -147,7 +147,7 @@
 					[false,false,false,false,false,false,true]
 				]
 	},
-	{"Name":"Maze 6",
+	{"Name":"Maze 4",
 		"ImageName":"index.jpg",
 		"difficulty":1.5,
 		"startCol":0,
@@ -175,7 +175,7 @@
 					[false,false,false,false,false,false,true]
 				]
 	},
-	{"Name":"Maze 7",
+	{"Name":"Maze 5",
 		"ImageName":"index.jpg",
 		"difficulty":1,
 		"startCol":3,
@@ -203,27 +203,38 @@
 					[false,false,false,false,false,false,false]
 				]
 	},
-	{"Name":"Maze 8",
+	{"Name":"Maze 6",
 		"ImageName":"index.jpg",
-		"difficulty":1,
+		"difficulty":2.5,
 		"startCol":0,
-		"startRow":0,
-		"endRow":1,
-		"endCol":7,
-		"rowNum":3,
-		"colNum":8,
+		"startRow":9,
+		"endRow":4,
+		"endCol":4,
+		"rowNum":10,
+		"colNum":10,
 		"Vertical": [   
-					[true,false,true,false,true,false,true,false],
-					[true,true,true,true,true,true,true,false],
-					[false,true,false,true,false,true,false,false]
-					
+					[false,false,false,false,false,false,false,false,false,false],
+					[false,false,false,false,false,false,false,false,false,false],
+					[true,false,true,false,true,false,false,false,false,false],
+					[false,true,false,true,true,false,false,false,false,false],
+					[true,true,false,false,false,false,false,false,false,false],
+					[false,false,true,false,true,true,true,true,true,false],
+					[false,false,false,true,true,true,true,true,true,false],
+					[false,false,false,false,true,true,true,true,true,false],
+					[true,false,false,true,true,false,false,false,false,false],
+					[false,true,true,false,false,true,false,false,false,false]
 				],
 		"Horizontal": [   
-					[false,false,false,false,false,false,false,false],
-					[false,false,false,false,false,false,false,false],
-					[false,false,false,false,false,false,false,false]
+					[false,true,true,true,true,false,true,true,true,true],
+					[false,true,true,true,true,true,true,true,true,false],
+					[false,false,false,false,false,false,true,true,true,true],
+					[false,false,true,true,false,true,true,true,true,false],
+					[false,true,false,true,false,true,true,false,true,false],
+					[true,true,true,false,false,false,false,false,false,false],
+					[true,true,true,true,false,false,false,false,false,false],
+					[false,true,true,true,true,true,false,false,false,false],
+					[false,false,true,false,true,false,true,true,true,true],
+					[false,false,false,false,false,false,false,false,false,false]
 				]
-	}
-	]
 }
 }
