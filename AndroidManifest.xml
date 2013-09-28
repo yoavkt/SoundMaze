@@ -76,10 +76,6 @@
             android:label="@string/title_activity_try" 
             android:screenOrientation="portrait">
         </activity>
-                <provider
-            android:name="com.example.soundmaze.provider.BabbleContentProvider"
-            android:authorities="com.example.soundmaze.provider.BabbleContentProvider"
-            android:exported="false" />
 
           
     </application>
