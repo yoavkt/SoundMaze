@@ -6,19 +6,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.Menu;
-
-
 import java.util.ArrayList;
 import java.util.List;
-
-import android.app.Activity;
 import android.content.ComponentName;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ResolveInfo;
 import android.graphics.Typeface;
-import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.speech.RecognitionListener;
@@ -30,7 +23,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.soundmaze.Constants.State;
 
 
@@ -71,25 +63,19 @@ public class MazeActivity extends Activity {
 		Maze m1 = (Maze)in.getParcelableExtra("maze");
 		myMazeView = (MazeView) this.findViewById(R.id.mazeView);
 		myMazeView.setMaze(m1);
-		//myMazeView.startMazeHeroMode();
 		textMove = (TextView) findViewById(R.id.textMove);
 		textScore = (TextView) findViewById(R.id.textScore);
 		mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 		mButtonMicrophone1 = (MicButton) findViewById(R.id.buttonMicrophone1);
-
 		life1=(ImageView)findViewById(R.id.ImageView01);
 		life2=(ImageView)findViewById(R.id.ImageView02);
 		life3=(ImageView)findViewById(R.id.ImageView03);
-
-
-		TextView text1=(TextView)findViewById(R.id.textMove);
 		TextView text2=(TextView)findViewById(R.id.textView1);
-		TextView text3=(TextView)findViewById(R.id.textScore);
 		Typeface face = Typeface.createFromAsset(getAssets(),
 				"Chunkfive.otf");
-		text1.setTypeface(face);
+		textMove.setTypeface(face);
 		text2.setTypeface(face);
-		text3.setTypeface(face);
+		textScore.setTypeface(face);
 
 		Button guide=(Button)findViewById(R.id.giudebtn);
 		guide.setOnClickListener(new View.OnClickListener() {
@@ -348,24 +334,24 @@ public class MazeActivity extends Activity {
 	private void changeLife(int lifes){
 		switch (lifes) {
 		case 2:
-			life3.setVisibility(life3.INVISIBLE);
-			life2.setVisibility(life2.VISIBLE);
-			life1.setVisibility(life1.VISIBLE);
+			life3.setVisibility(View.INVISIBLE);
+			life2.setVisibility(View.VISIBLE);
+			life1.setVisibility(View.VISIBLE);
 			break;
 		case 1:
-			life3.setVisibility(life3.INVISIBLE);
-			life2.setVisibility(life2.INVISIBLE);
-			life1.setVisibility(life1.VISIBLE);
+			life3.setVisibility(View.INVISIBLE);
+			life2.setVisibility(View.INVISIBLE);
+			life1.setVisibility(View.VISIBLE);
 			break;
 		case 3:
-			life3.setVisibility(life3.VISIBLE);
-			life2.setVisibility(life2.VISIBLE);
-			life1.setVisibility(life1.VISIBLE);
+			life3.setVisibility(View.VISIBLE);
+			life2.setVisibility(View.VISIBLE);
+			life1.setVisibility(View.VISIBLE);
 			break;
 		case 0:
-			life3.setVisibility(life3.INVISIBLE);
-			life2.setVisibility(life2.INVISIBLE);
-			life1.setVisibility(life1.INVISIBLE);
+			life3.setVisibility(View.INVISIBLE);
+			life2.setVisibility(View.INVISIBLE);
+			life1.setVisibility(View.INVISIBLE);
 			break;
 		default:
 			break;

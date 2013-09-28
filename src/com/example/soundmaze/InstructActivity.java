@@ -34,7 +34,6 @@ public class InstructActivity extends Activity {
 	private SpeechRecognizer mSr;
 	private TextView mTvFeedback;
 	MazeMaster myMazeMaster;
-	//tamar
 	TableHelper th;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -231,8 +230,6 @@ public class InstructActivity extends Activity {
 		private static int rights=2;
 		private static int downs=2;
 		private static int lefts=2;
-		private static String SUCCESS_STRING="Very good!";
-		private static String SAY_STRING=" say ";
 		
 		private static String nextMessage(String dir,int val)
 		{

@@ -2,22 +2,18 @@ package com.example.soundmaze;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.TextView;
 
 public class MazeView extends View {
 	
 	public Maze _maze;
-	private Activity _gameContext;
 	//width and height of the whole maze and width of lines which
 	//make the walls
 	private int width, height, lineWidth;
@@ -34,25 +30,21 @@ public class MazeView extends View {
 	
 	Bitmap playerBitMap;
 	Bitmap goalBitMap;
-//	TextView textScore;
 
 	public MazeView(Context context, AttributeSet attrs) {
 		super(context,attrs);
-		_gameContext = (Activity)context;
 		setFocusable(true);
 		this.setFocusableInTouchMode(true);
 		setDisplayItmes();
 		_scoreFactor=1;//_maze.get_difficulty();
 		 playerBitMap=BitmapFactory.decodeResource(getResources(), R.drawable.dogpawn_small);
 		 goalBitMap=BitmapFactory.decodeResource(getResources(), R.drawable.bone);
-//		textScore=(TextView)findViewById(R.id.textScore);
 		
 		
 	}
 	
 	public MazeView(Context context, Maze maze) {
 		super(context);
-		_gameContext = (Activity)context;
 		_maze = maze;
 		_scoreFactor=(int) (_scoreFactor*maze.get_difficulty());
 		setDisplayItmes();
@@ -96,7 +88,6 @@ public class MazeView extends View {
 		red.setColor(getResources().getColor(R.color.ball));
 		background = new Paint();
 		background.setColor(getResources().getColor(R.color.blue));
-//		setBackgroundResource(R.drawable.trophygolden2);
 		}
 	public void setMaze(Maze maze)
 	{
@@ -204,7 +195,7 @@ public class MazeView extends View {
 				moved= false;
 		}
 		if(moved) {
-			_score=(int)((_score+5)*_scoreFactor);
+			_score=(int)(_score+(5*_scoreFactor));
 			invalidate();
 			if(_maze.winMaze()) {
 				_score=(int)(_score+100*_scoreFactor);
