@@ -60,7 +60,7 @@ public class MazeActivity extends Activity {
 	ImageView life1;
 	ImageView life2;
 	ImageView life3;
-	
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -76,12 +76,12 @@ public class MazeActivity extends Activity {
 		textScore = (TextView) findViewById(R.id.textScore);
 		mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 		mButtonMicrophone1 = (MicButton) findViewById(R.id.buttonMicrophone1);
-		
+
 		life1=(ImageView)findViewById(R.id.ImageView01);
 		life2=(ImageView)findViewById(R.id.ImageView02);
 		life3=(ImageView)findViewById(R.id.ImageView03);
-		
-		
+
+
 		TextView text1=(TextView)findViewById(R.id.textMove);
 		TextView text2=(TextView)findViewById(R.id.textView1);
 		TextView text3=(TextView)findViewById(R.id.textScore);
@@ -90,7 +90,7 @@ public class MazeActivity extends Activity {
 		text1.setTypeface(face);
 		text2.setTypeface(face);
 		text3.setTypeface(face);
-		
+
 		Button guide=(Button)findViewById(R.id.giudebtn);
 		guide.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -99,7 +99,7 @@ public class MazeActivity extends Activity {
 				MazeActivity.this.startActivity(myIntent);
 			}
 		});
-		
+
 		Button hero=(Button)findViewById(R.id.buttonHero);
 		hero.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -163,15 +163,15 @@ public class MazeActivity extends Activity {
 	}
 
 	@Override
-	 public void onBackPressed() {
-		 finish();
-		 return;
-		 }
+	public void onBackPressed() {
+		finish();
+		return;
+	}
 
 	private void setUpRecognizerGui(final SpeechRecognizer sr) {
 		mButtonMicrophone1.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				
+
 				if (mState == State.INIT || mState == State.ERROR) {
 					listenSentence(sr,  true);
 				} else if (mState == State.LISTENING) {
@@ -217,7 +217,7 @@ public class MazeActivity extends Activity {
 
 
 	private void startListening(final SpeechRecognizer sr, final boolean isStorePhrase) {
-//		Intent intentRecognizer = createRecognizerIntent();
+		//		Intent intentRecognizer = createRecognizerIntent();
 
 		final Runnable stopListening = new Runnable() {
 			@Override
@@ -304,7 +304,7 @@ public class MazeActivity extends Activity {
 					textMove.setText(moveResult);
 					myMazeView.movementUpdater(move);
 					changeLife(myMazeView.getLife());
-					
+
 					if (myMazeView.getLife()==0)
 					{
 						myMazeView.restartMaze();
@@ -314,30 +314,26 @@ public class MazeActivity extends Activity {
 						listen=false;
 					}
 					else{
-						
-					
+
+
 						textScore.setText("Your Score: " +String.valueOf(myMazeView.get_score()));
-					
-				if (myMazeView.getWin()){
-						int scoretmp=myMazeView.get_score();
-						textScore.setText("Your Score: 0");
-						myMazeView.restartMaze();
-						Intent myIntent = new Intent(MazeActivity.this,
-								AddUserActivity.class);
-						myIntent.putExtra("score", scoretmp);
-						MazeActivity.this.startActivity(myIntent);
-<<<<<<< HEAD
+
+						if (myMazeView.getWin()){
+							int scoretmp=myMazeView.get_score();
+							textScore.setText("Your Score: 0");
+							myMazeView.restartMaze();
+							Intent myIntent = new Intent(MazeActivity.this,
+									AddUserActivity.class);
+							myIntent.putExtra("score", scoretmp);
+							MazeActivity.this.startActivity(myIntent);
+							listen=false;
+
+						}
 					}
-					}
-=======
-						listen=false;
-					}}
->>>>>>> 30e2af514113e7090514f049dc10b2a6b16c0819
-						
-					
+
 				}
 				if(listen){
-				sr.startListening(createRecognizerIntent());
+					sr.startListening(createRecognizerIntent());
 				}
 			}
 
@@ -348,7 +344,7 @@ public class MazeActivity extends Activity {
 		});
 		sr.startListening(createRecognizerIntent());
 	}
-	
+
 	private void changeLife(int lifes){
 		switch (lifes) {
 		case 2:
@@ -374,7 +370,7 @@ public class MazeActivity extends Activity {
 		default:
 			break;
 		}
-		
+
 	}
 }
 
