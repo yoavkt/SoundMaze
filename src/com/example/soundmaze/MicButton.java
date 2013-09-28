@@ -78,15 +78,6 @@ public class MicButton extends ImageButton {
 	}
 
 
-	public void fadeIn() {
-//		Animations.startFadeAnimation(mAnimFadeIn, this, View.VISIBLE);
-	}
-
-	public void fadeOut() {
-//		Animations.startFadeAnimation(mAnimFadeOut, this, View.INVISIBLE);
-	}
-
-
 	private void initAnimations(Context context) {
 		Resources res = getResources();
 		mDrawableMic = res.getDrawable(R.drawable.button_mic);

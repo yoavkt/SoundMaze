@@ -15,7 +15,7 @@ public class Maze implements Parcelable  {
 	
 	public static final int UP = 0, DOWN = 1, RIGHT = 2, LEFT = 3;
 
-	
+
 	String _mazeName;
 	boolean[][] _verticalWall;
 	boolean[][] _horizontalWall;

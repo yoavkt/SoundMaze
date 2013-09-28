@@ -33,10 +33,6 @@ public class TableHelper {
 			parseObject.put("score", user.getScore());
 			values.put("name", user.getScore());
 		parseObject.saveInBackground();
-//		long succ=db.insert("users", null, values);
-//		if(succ==-1){
-//			return false;
-//		}
 		return true;
 	}
 

@@ -39,13 +39,8 @@ public class MazeActivity extends Activity {
 	private SharedPreferences mPrefs;
 	private MicButton mButtonMicrophone1;
 	private SpeechRecognizer mSr;
-	//	private TextView mTvFeedback;
 	MazeMaster myMazeMaster;
-	//tamar
 	TableHelper th;
-
-
-
 	MazeView myMazeView;
 	TextView textMove;
 	TextView textScore;
